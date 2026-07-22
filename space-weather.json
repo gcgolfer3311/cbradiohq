@@ -1,0 +1,14 @@
+{
+  "updated": "2026-07-07T20:00:00+00:00",
+  "sfi": 110,
+  "sfi_trend": -93,
+  "kp": null,
+  "es_season": {
+    "active": true,
+    "strength": "peak",
+    "note": "Peak Sporadic-E season \u2014 the single best window of the year for CB skip."
+  },
+  "skip_score": 60,
+  "skip_label": "Good",
+  "source": "NOAA SWPC (services.swpc.noaa.gov) \u2014 seed snapshot, live cron not yet deployed"
+}
