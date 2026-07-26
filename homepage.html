@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CB Radio HQ — Live Skip Outlook & Channel Guide</title>
+<meta name="description" content="Live NOAA-driven skip forecast, interactive 40-channel guide, SWR tuning tool, 10-codes, and legal power limits for CB radio. Free, no login.">
+<link rel="canonical" href="https://cbradiohq.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#14171a">
+<meta name="author" content="CB Radio HQ">
+<meta name="keywords" content="CB radio channel guide, CB 10 codes, CB skip conditions, CB radio frequencies, trucker CB channel, CB radio legal power limits, CB radio gear">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CB Radio HQ">
+<meta property="og:title" content="CB Radio HQ — Live Skip Outlook & Channel Guide">
+<meta property="og:description" content="Live NOAA-driven skip forecast, interactive 40-channel guide, SWR tuning tool, 10-codes, and legal power limits for CB radio. Free, no login.">
+<meta property="og:url" content="https://cbradiohq.com/">
+<meta property="og:image" content="https://cbradiohq.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CB Radio HQ — Live Skip Outlook & Channel Guide">
+<meta name="twitter:description" content="Live NOAA-driven skip forecast, SWR tuning tool, 10-codes, and legal power limits for CB radio. Free, no login.">
+<meta name="twitter:image" content="https://cbradiohq.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Structured data: WebSite + SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "CB Radio HQ",
+  "url": "https://cbradiohq.com/",
+  "description": "Live skip conditions forecast, 40-channel guide, 10-codes, legal power limits, and gear reference for the CB radio hobby.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cbradiohq.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Structured data: FAQPage (mirrors the on-page FAQ section — keep in sync if FAQS[] changes) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Do I need a license to use a CB radio?","acceptedAnswer":{"@type":"Answer","text":"No. CB has been license-free in the U.S. since 1983. You can key up and talk with zero paperwork, zero test, and zero fee — the only U.S. two-way radio service where that's fully true (GMRS requires a $35 license; ham requires a test)."}},
+    {"@type":"Question","name":"What's the difference between CB and GMRS?","acceptedAnswer":{"@type":"Answer","text":"CB operates around 27 MHz with a hard 4W (AM) / 12W (SSB) power cap and no license. GMRS operates in the 462/467 MHz UHF band, allows up to 50W, supports repeaters for much longer range, and requires a $35 FCC license (no test) per family."}},
+    {"@type":"Question","name":"Why does my range seem so short?","acceptedAnswer":{"@type":"Answer","text":"Almost always the antenna, not the radio. A poorly grounded or mistuned antenna can cut your real-world range to under a mile even on a legal 4W radio. Get an SWR meter before upgrading anything else."}},
+    {"@type":"Question","name":"Are 'export radios' legal?","acceptedAnswer":{"@type":"Answer","text":"No. Export/10-meter radios that exceed the FCC's 4W AM / 12W SSB limits, or that transmit outside the 40 authorized channels, are illegal for CB use in the U.S. even though they're widely sold online."}},
+    {"@type":"Question","name":"Is CB radio actually still used, or is it dead?","acceptedAnswer":{"@type":"Answer","text":"Still very active — long-haul trucking (Channel 19 in particular), off-road/4x4 clubs, agricultural operations, and a real prepper/emergency-comms community all rely on it daily. It's smaller than its 1970s peak but far from dead."}}
+  ]
+}
+</script>
+
+<!-- Structured data: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"CB Radio HQ","item":"https://cbradiohq.com/"},
+    {"@type":"ListItem","position":2,"name":"Channel Guide","item":"https://cbradiohq.com/#channels"},
+    {"@type":"ListItem","position":3,"name":"Skip Outlook","item":"https://cbradiohq.com/#skip"}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#14171a;
+    --bg-panel:#1b1f23;
+    --bg-panel-raised:#20252a;
+    --line:#2c3238;
+    --chrome:#c9ced4;
+    --chrome-dim:#7d848c;
+    --orange:#ff6a1f;
+    --orange-dim:#c9500f;
+    --red:#c0392b;
+    --paper:#ede6d1;
+    --paper-line:#d8cfb2;
+    --text:#e9ebee;
+    --text-dim:#9aa0a8;
+    --text-faint:#5f6570;
+    --radius:2px;
+    --font-display:'Oswald',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  body{
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:0.02em;text-transform:uppercase;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--orange);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{content:'';width:18px;height:2px;background:var(--orange);display:inline-block;}
+  :focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+  .visually-hidden-focusable:focus{left:12px !important;top:12px !important;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(20,23,26,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-display);
+    font-size:19px;font-weight:700;letter-spacing:0.03em;
+    text-decoration:none;color:var(--text);
+  }
+  .logo .dial-mark{
+    width:26px;height:26px;border-radius:50%;
+    border:2px solid var(--chrome);
+    position:relative;flex:none;
+    background:radial-gradient(circle at 35% 30%, #33383e, #101316 70%);
+  }
+  .logo .dial-mark::after{
+    content:'';position:absolute;top:50%;left:50%;
+    width:2px;height:9px;background:var(--orange);
+    transform:translate(-50%,-100%) rotate(20deg);
+    transform-origin:bottom center;
+    border-radius:1px;
+  }
+  .logo small{color:var(--orange);font-weight:400;}
+  nav.links{display:flex;gap:28px;font-size:13px;letter-spacing:0.02em;}
+  nav.links a{
+    text-decoration:none;color:var(--text-dim);
+    font-weight:500;
+    padding:4px 0;border-bottom:1px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  nav.links a:hover{color:var(--text);border-color:var(--orange-dim);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:var(--radius);font-size:18px;}
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(255,106,31,0.10), transparent 60%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{
+    font-size:clamp(34px,5vw,54px);
+    line-height:1.03;
+    margin:14px 0 18px;
+  }
+  .hero h1 span{color:var(--orange);}
+  .hero p.lead{
+    font-size:16px;color:var(--text-dim);max-width:46ch;margin-bottom:26px;
+  }
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;
+    font-family:var(--font-mono);
+    font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;
+    text-decoration:none;border-radius:var(--radius);
+    border:1px solid var(--line);
+    transition:transform .12s, border-color .12s, background .12s;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--orange);color:#161311;border-color:var(--orange);font-weight:600;}
+  .btn-primary:hover{background:#ff7d3d;}
+  .btn-ghost{color:var(--text);border-color:var(--chrome-dim);}
+  .btn-ghost:hover{border-color:var(--chrome);}
+
+  /* ---- Rotary dial (signature element) ---- */
+  .dial-panel{
+    background:linear-gradient(155deg, #23282d, #171a1d);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+  }
+  .dial-readout{
+    background:#0c0e10;
+    border:1px solid #000;
+    border-radius:3px;
+    padding:14px 16px;
+    margin-bottom:18px;
+    display:flex;justify-content:space-between;align-items:baseline;
+    box-shadow:inset 0 2px 6px rgba(0,0,0,0.6);
+  }
+  .dial-readout .ch-num{
+    font-family:var(--font-mono);color:#7CFF9E;font-size:34px;font-weight:600;
+    text-shadow:0 0 10px rgba(124,255,158,0.35);
+    letter-spacing:0.02em;
+  }
+  .dial-readout .ch-freq{font-family:var(--font-mono);color:#7CFF9E;font-size:15px;opacity:0.85;}
+  .dial-wrap{display:flex;justify-content:center;padding:10px 0 4px;}
+  #dial-svg{cursor:grab;touch-action:none;user-select:none;}
+  #dial-svg:active{cursor:grabbing;}
+  .dial-tick text{
+    font-family:var(--font-mono);
+    font-size:8.5px;
+    fill:var(--chrome-dim);
+    text-anchor:middle;
+  }
+  .dial-tick.active text{fill:var(--orange);font-weight:600;}
+  .dial-tick.special text{fill:var(--chrome);}
+  .dial-info{
+    margin-top:16px;
+    font-size:13px;color:var(--text-dim);
+    min-height:38px;
+    border-top:1px dashed var(--line);
+    padding-top:14px;
+  }
+  .dial-info b{color:var(--text);font-weight:600;}
+  .dial-hint{
+    font-family:var(--font-mono);font-size:10.5px;color:var(--text-faint);
+    text-align:center;margin-top:6px;letter-spacing:0.04em;
+  }
+
+  /* ============ SECTION SHELL ============ */
+  section{padding:64px 0;border-bottom:1px solid var(--line);}
+  section.paper{background:var(--paper);color:#20221c;border-bottom:1px solid #cfc6a6;}
+  section.paper .eyebrow{color:var(--orange-dim);}
+  section.paper .eyebrow::before{background:var(--orange-dim);}
+  .section-head{max-width:640px;margin-bottom:34px;}
+  .section-head h2{font-size:clamp(24px,3.2vw,32px);margin-top:10px;}
+  .section-head p{color:var(--text-dim);font-size:14.5px;margin-top:10px;}
+  section.paper .section-head p{color:#5a5540;}
+
+  /* ============ CHANNEL TABLE ============ */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:4px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px;}
+  thead th{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
+    text-align:left;padding:12px 14px;background:var(--bg-panel-raised);color:var(--text-dim);
+    border-bottom:1px solid var(--line);position:sticky;top:0;
+  }
+  tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:hover{background:rgba(255,106,31,0.05);}
+  tbody td.ch{font-family:var(--font-mono);color:var(--orange);font-weight:600;}
+  tbody td.freq{font-family:var(--font-mono);color:var(--text-dim);white-space:nowrap;}
+  .tag{
+    display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:0.04em;
+    padding:2px 7px;border-radius:2px;border:1px solid var(--chrome-dim);color:var(--chrome);
+    text-transform:uppercase;margin-right:4px;
+  }
+  .tag.hot{border-color:var(--orange);color:var(--orange);}
+
+  /* ============ LEGAL / STAT CARDS ============ */
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:760px){.cards3{grid-template-columns:1fr;}}
+  .stat-card{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:4px;padding:22px;
+  }
+  .stat-card .num{font-family:var(--font-mono);font-size:30px;color:var(--orange);font-weight:600;}
+  .stat-card .label{font-size:12.5px;color:var(--text-dim);margin-top:6px;text-transform:uppercase;letter-spacing:0.04em;font-family:var(--font-mono);}
+  .stat-card p{font-size:13px;color:var(--text-dim);margin-top:12px;}
+  .legal-note{
+    margin-top:22px;font-size:13px;color:var(--text-dim);
+    border-left:2px solid var(--orange-dim);padding:10px 16px;background:var(--bg-panel);
+  }
+
+  /* ============ 10-CODES ============ */
+  .code-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  @media (max-width:760px){.code-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.code-grid{grid-template-columns:1fr;}}
+  .code-cell{background:var(--bg-panel);padding:14px 16px;}
+  .code-cell .code{font-family:var(--font-mono);color:var(--orange);font-weight:600;font-size:14px;}
+  .code-cell .meaning{font-size:12.5px;color:var(--text-dim);margin-top:3px;}
+
+  /* ============ SKIP CONDITIONS ============ */
+  .skip-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  @media (max-width:860px){.skip-grid{grid-template-columns:1fr;}}
+  .skip-diagram{background:var(--bg-panel);border:1px solid var(--line);border-radius:6px;padding:20px;}
+  .skip-legend{display:flex;gap:16px;margin-top:14px;font-size:11.5px;color:var(--text-dim);font-family:var(--font-mono);flex-wrap:wrap;}
+  .skip-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .skip-copy h3{font-size:15px;margin-bottom:8px;color:var(--text);}
+  .skip-copy p{font-size:13.5px;color:var(--text-dim);margin-bottom:16px;}
+
+  /* ============ GEAR ============ */
+  .gear-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:860px){.gear-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.gear-grid{grid-template-columns:1fr;}}
+  .gear-card{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:4px;padding:20px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .gear-card .kicker{font-family:var(--font-mono);font-size:10.5px;color:var(--orange);text-transform:uppercase;letter-spacing:0.05em;}
+  .gear-card h3{font-family:var(--font-body);font-size:15px;text-transform:none;letter-spacing:0;font-weight:600;}
+  .gear-card p{font-size:12.5px;color:var(--text-dim);flex:1;}
+  .gear-card .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:4px;}
+  .gear-card .est{font-family:var(--font-mono);font-size:12px;color:var(--chrome);}
+  .gear-link{font-family:var(--font-mono);font-size:11px;color:var(--orange);text-decoration:none;border-bottom:1px solid var(--orange-dim);padding-bottom:1px;}
+  .gear-link:hover{color:#ff8b4d;}
+
+  /* ============ FAQ ============ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;color:var(--text);
+    padding:18px 0;font-family:var(--font-body);font-weight:600;font-size:14.5px;
+    display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+  }
+  .faq-q .plus{font-family:var(--font-mono);color:var(--orange);font-size:16px;transition:transform .15s;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .2s ease;font-size:13.5px;color:var(--text-dim);}
+  .faq-a p{padding-bottom:18px;max-width:70ch;}
+
+  /* ============ FOOTER ============ */
+  footer{padding:44px 0 60px;}
+  .footer-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-size:12.5px;color:var(--text-faint);}
+  .footer-grid a{text-decoration:none;color:var(--text-dim);}
+  .footer-grid a:hover{color:var(--orange);}
+  .affiliate-disclosure{
+    margin-top:24px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--text-faint);max-width:80ch;line-height:1.6;
+  }
+
+  /* ============ LIVE SKIP OUTLOOK ============ */
+  .outlook-card{
+    background:#14171a;border:1px solid var(--line);border-radius:6px;
+    padding:22px 24px;margin-bottom:30px;
+    display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;
+  }
+  @media (max-width:760px){ .outlook-card{grid-template-columns:1fr;text-align:center;} }
+  .outlook-gauge{position:relative;width:110px;height:110px;flex:none;margin:0 auto;}
+  .outlook-gauge svg{transform:rotate(-90deg);}
+  .outlook-gauge .gauge-label{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .outlook-gauge .gauge-score{font-family:var(--font-mono);font-size:24px;font-weight:600;color:var(--text);}
+  .outlook-gauge .gauge-unit{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;}
+  .outlook-body .badge{
+    display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.05em;
+    text-transform:uppercase;padding:3px 10px;border-radius:2px;font-weight:600;margin-bottom:8px;
+  }
+  .badge.excellent{background:rgba(124,255,158,0.14);color:#7CFF9E;border:1px solid rgba(124,255,158,0.4);}
+  .badge.good{background:rgba(255,106,31,0.14);color:var(--orange);border:1px solid rgba(255,106,31,0.4);}
+  .badge.fair{background:rgba(201,206,212,0.1);color:var(--chrome);border:1px solid var(--chrome-dim);}
+  .badge.low{background:rgba(192,57,43,0.12);color:#e07a6f;border:1px solid rgba(192,57,43,0.4);}
+  .outlook-body p{font-size:13px;color:var(--text-dim);max-width:52ch;}
+  .outlook-stats{display:flex;gap:22px;flex-wrap:wrap;}
+  .outlook-stats div{text-align:center;}
+  .outlook-stats .v{font-family:var(--font-mono);font-size:17px;color:var(--text);}
+  .outlook-stats .k{font-family:var(--font-mono);font-size:9.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.04em;}
+  .outlook-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-faint);margin-top:14px;}
+  .mechanism-note{
+    margin-top:18px;font-size:12.5px;color:#5a5540;background:#e3dbbf;border-left:2px solid var(--orange-dim);
+    padding:10px 14px;border-radius:2px;
+  }
+
+  /* ============ SKIP LOG ============ */
+  .log-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:32px;}
+  @media (max-width:900px){ .log-grid{grid-template-columns:1fr;} }
+  .log-form{background:var(--bg-panel);border:1px solid var(--line);border-radius:6px;padding:22px;}
+  .log-form .field{margin-bottom:14px;}
+  .log-form label{display:block;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-dim);margin-bottom:6px;}
+  .log-form input,.log-form select,.log-form textarea{
+    width:100%;background:#0f1214;border:1px solid var(--line);color:var(--text);
+    padding:9px 10px;border-radius:3px;font-family:var(--font-body);font-size:13.5px;
+  }
+  .log-form textarea{resize:vertical;min-height:52px;}
+  .log-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .btn-block{width:100%;justify-content:center;margin-top:4px;}
+  .badge-strip{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+  .badge-pill{
+    font-family:var(--font-mono);font-size:11px;padding:8px 14px;border-radius:3px;
+    background:var(--bg-panel);border:1px solid var(--line);
+  }
+  .badge-pill .n{color:var(--orange);font-weight:600;font-size:15px;margin-right:6px;}
+  .states-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-bottom:20px;}
+  @media (max-width:600px){ .states-grid{grid-template-columns:repeat(6,1fr);} }
+  .state-chip{
+    font-family:var(--font-mono);font-size:10px;text-align:center;padding:6px 2px;border-radius:2px;
+    background:#0f1214;border:1px solid var(--line);color:var(--text-faint);letter-spacing:0.02em;
+    transition:all .15s;
+  }
+  .state-chip.hit{background:rgba(255,106,31,0.16);border-color:var(--orange);color:var(--orange);font-weight:600;}
+  .log-table-wrap{border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  .log-empty{padding:26px;text-align:center;color:var(--text-faint);font-size:13px;}
+  .log-row-del{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:15px;}
+  .log-row-del:hover{color:var(--red);}
+  .log-actions{display:flex;gap:10px;margin-top:14px;}
+  .log-actions .btn{font-size:11px;padding:9px 14px;}
+
+  /* ============ HANDLE GENERATOR ============ */
+  .handle-box{
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+    background:linear-gradient(120deg, var(--bg-panel), var(--bg-panel-raised));
+    border:1px solid var(--line);border-radius:6px;padding:22px 28px;
+  }
+  .handle-output{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .handle-readout{
+    font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--orange);
+    background:#0f1214;border:1px solid var(--line);border-radius:3px;padding:10px 18px;
+    min-width:220px;text-align:center;
+  }
+
+  /* ============ SKIP SPOTS ============ */
+  .spots-grid{display:grid;grid-template-columns:0.9fr 1.3fr;gap:24px;}
+  @media (max-width:860px){ .spots-grid{grid-template-columns:1fr;} }
+  .spots-form{background:var(--bg-panel);border:1px solid var(--line);border-radius:6px;padding:20px;height:fit-content;}
+  .spots-feed{border:1px solid var(--line);border-radius:6px;max-height:420px;overflow-y:auto;}
+  .spot-item{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start;}
+  .spot-item:last-child{border-bottom:none;}
+  .spot-ch-badge{
+    font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--orange);
+    background:rgba(255,106,31,0.1);border:1px solid var(--orange-dim);border-radius:3px;
+    padding:3px 8px;flex:none;
+  }
+  .spot-body{flex:1;}
+  .spot-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--text-faint);margin-bottom:3px;}
+  .spot-msg{font-size:13px;color:var(--text-dim);}
+  .spot-offline{padding:22px;text-align:center;font-size:12.5px;color:var(--text-faint);line-height:1.7;}
+
+  /* ============ SWR DOCTOR ============ */
+  .swr-tool{max-width:760px;}
+  .swr-inputs{
+    display:grid;grid-template-columns:1fr auto 1fr auto;gap:16px;align-items:end;
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:6px;padding:22px;
+  }
+  @media (max-width:680px){ .swr-inputs{grid-template-columns:1fr;gap:14px;} .swr-vs{display:none;} }
+  .swr-input-block label{
+    display:block;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.04em;
+    color:var(--text);margin-bottom:8px;font-weight:600;
+  }
+  .swr-input-block label span{display:block;font-size:9.5px;color:var(--text-faint);text-transform:none;letter-spacing:0;font-weight:400;margin-top:2px;}
+  .swr-input-block input{
+    width:100%;background:#0f1214;border:1px solid var(--line);color:var(--orange);
+    padding:12px 14px;border-radius:3px;font-family:var(--font-mono);font-size:20px;font-weight:600;text-align:center;
+  }
+  .swr-vs{font-family:var(--font-mono);color:var(--text-faint);font-size:13px;padding-bottom:14px;}
+  #swr-diagnose{height:fit-content;}
+  @media (max-width:680px){ #swr-diagnose{width:100%;justify-content:center;} }
+
+  .swr-result{margin-top:20px;border-radius:6px;overflow:hidden;border:1px solid var(--line);}
+  .swr-verdict{padding:18px 22px;font-family:var(--font-display);font-size:19px;text-transform:uppercase;letter-spacing:0.02em;color:#161311;}
+  .swr-verdict.good{background:#7CFF9E;}
+  .swr-verdict.tune{background:var(--orange);}
+  .swr-verdict.bad{background:#c0392b;color:#fff;}
+  .swr-action{padding:18px 22px;font-size:14px;color:var(--text);background:var(--bg-panel);line-height:1.6;}
+  .swr-action b{color:var(--orange);}
+  .swr-checklist{padding:0 22px 20px;background:var(--bg-panel);}
+  .swr-checklist ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .swr-checklist li{font-size:13px;color:var(--text-dim);padding-left:20px;position:relative;}
+  .swr-checklist li::before{content:'→';position:absolute;left:0;color:var(--orange);font-family:var(--font-mono);}
+  .swr-checklist h4{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-faint);margin:4px 0 12px;}
+
+  .swr-legend{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--text-dim);}
+  @media (max-width:560px){ .swr-legend{grid-template-columns:1fr;} }
+  .swr-legend b{color:var(--text);}
+  .swr-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:8px;}
+
+  /* ============ ANTENNA PICKER (on paper bg) ============ */
+  .ap-tool{max-width:820px;}
+  .ap-q{margin-bottom:22px;}
+  .ap-label{display:block;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#5a5540;margin-bottom:10px;font-weight:600;}
+  .ap-options{display:flex;gap:8px;flex-wrap:wrap;}
+  .ap-opt{
+    font-family:var(--font-body);font-size:13px;font-weight:500;
+    padding:9px 15px;border-radius:3px;cursor:pointer;
+    background:#e3dbbf;border:1px solid #cfc6a6;color:#3a3628;
+    transition:all .12s;
+  }
+  .ap-opt:hover{border-color:var(--orange-dim);}
+  .ap-opt.sel{background:var(--orange);border-color:var(--orange);color:#161311;font-weight:600;}
+  .ap-result{
+    margin-top:8px;background:#14171a;border:1px solid #cfc6a6;border-radius:6px;overflow:hidden;
+  }
+  .ap-rec-head{padding:18px 22px;background:#20252a;border-bottom:1px solid #2c3238;}
+  .ap-rec-head .ap-kicker{font-family:var(--font-mono);font-size:10.5px;color:var(--orange);text-transform:uppercase;letter-spacing:0.05em;}
+  .ap-rec-head h3{color:#e9ebee;font-size:18px;margin-top:5px;text-transform:none;font-family:var(--font-body);font-weight:600;}
+  .ap-rec-body{padding:20px 22px;}
+  .ap-rec-body p{font-size:13.5px;color:#9aa0a8;margin-bottom:14px;line-height:1.6;}
+  .ap-rec-body p b{color:#e9ebee;}
+  .ap-warn{
+    background:rgba(224,160,48,0.1);border-left:2px solid #e0a030;padding:10px 14px;border-radius:2px;
+    font-size:12.5px;color:#d9c48a;margin-bottom:14px;
+  }
+  .ap-warn.danger{background:rgba(192,57,43,0.12);border-left-color:#c0392b;color:#e5a49b;}
+  .ap-pick{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:12px 16px;background:#1b1f23;border:1px solid #2c3238;border-radius:4px;margin-top:8px;
+  }
+  .ap-pick .ap-pick-name{font-size:13.5px;color:#e9ebee;font-weight:500;}
+  .ap-pick .ap-pick-cat{font-family:var(--font-mono);font-size:10px;color:#5f6570;text-transform:uppercase;}
+  .ap-pick a{font-family:var(--font-mono);font-size:11px;color:var(--orange);text-decoration:none;border-bottom:1px solid var(--orange-dim);white-space:nowrap;}
+
+  /* ============ LEGALITY CHECKER ============ */
+  .lc-tool{max-width:640px;}
+  .lc-tool input{
+    width:100%;background:var(--bg-panel);border:1px solid var(--line);color:var(--text);
+    padding:14px 16px;border-radius:4px;font-size:14px;font-family:var(--font-body);
+  }
+  .lc-tool input:focus{border-color:var(--orange);}
+  .lc-result{margin-top:16px;}
+  .lc-hit{
+    background:var(--bg-panel);border:1px solid var(--red);border-left-width:4px;border-radius:4px;
+    padding:16px 20px;
+  }
+  .lc-hit .lc-verdict{font-family:var(--font-mono);font-size:13px;color:#e5a49b;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:6px;}
+  .lc-hit p{font-size:13.5px;color:var(--text-dim);line-height:1.6;}
+  .lc-clear{
+    background:var(--bg-panel);border:1px solid #7CFF9E;border-left-width:4px;border-radius:4px;padding:16px 20px;
+  }
+  .lc-clear .lc-verdict{font-family:var(--font-mono);font-size:13px;color:#7CFF9E;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:6px;}
+  .lc-clear p{font-size:13.5px;color:var(--text-dim);}
+  .lc-hint{font-size:12px;color:var(--text-faint);margin-top:10px;}
+
+  /* ============ GUESTBOOK ============ */
+  .gb-form{
+    background:#14171a;border:1px solid #2c3238;border-radius:6px;padding:22px;margin-bottom:24px;
+  }
+  .gb-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+  @media (max-width:560px){ .gb-row{grid-template-columns:1fr;} }
+  .gb-form input,.gb-form textarea{
+    width:100%;background:#0f1214;border:1px solid #2c3238;color:#e9ebee;
+    padding:10px 12px;border-radius:3px;font-family:var(--font-body);font-size:13.5px;margin-bottom:10px;
+  }
+  .gb-form textarea{min-height:60px;resize:vertical;}
+  .gb-note{font-size:11px;color:#5f6570;margin-top:8px;font-family:var(--font-mono);}
+  .gb-entries{display:flex;flex-direction:column;gap:10px;}
+  .gb-entry{background:#14171a;border:1px solid #2c3238;border-radius:4px;padding:14px 18px;}
+  .gb-entry .gb-h{font-family:var(--font-mono);font-size:12.5px;color:var(--orange);font-weight:600;}
+  .gb-entry .gb-l{font-size:11px;color:#5f6570;margin-left:6px;}
+  .gb-entry .gb-m{font-size:13px;color:#9aa0a8;margin-top:4px;}
+
+  /* ============ LISTEN LIVE (SDR) ============ */
+  .sdr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+  @media (max-width:760px){ .sdr-grid{grid-template-columns:repeat(2,1fr);} }
+  .sdr-card{
+    display:flex;flex-direction:column;gap:6px;text-decoration:none;
+    background:#14171a;border:1px solid #2c3238;border-radius:5px;padding:14px 16px;
+    transition:border-color .12s;
+  }
+  .sdr-card:hover{border-color:var(--orange);}
+  .sdr-card .sdr-ch{font-family:var(--font-mono);color:var(--orange);font-weight:600;font-size:15px;}
+  .sdr-card .sdr-desc{font-size:11.5px;color:#9aa0a8;line-height:1.4;}
+  .sdr-card .sdr-go{font-family:var(--font-mono);font-size:10px;color:#5f6570;text-transform:uppercase;margin-top:2px;}
+  .sdr-more{font-size:13px;color:#5a5540;line-height:1.6;}
+  .sdr-more a{color:var(--orange-dim);font-weight:600;text-decoration:underline;}
+</style>
+</head>
+<body>
+<a href="#top" class="visually-hidden-focusable" style="position:absolute;left:-999px;top:0;background:var(--orange);color:#161311;padding:10px 16px;z-index:100;">Skip to content</a>
+
+<header>
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo"><span class="dial-mark"></span>CB RADIO <small>HQ</small></a>
+    <nav class="links" aria-label="Primary">
+      <a href="#channels">Channels</a>
+      <a href="#legal">Legal</a>
+      <a href="#swr">SWR</a>
+      <a href="#antenna">Antenna</a>
+      <a href="#legalcheck">Radio Check</a>
+      <a href="#codes">10-Codes</a>
+      <a href="#skip">Skip</a>
+      <a href="#sdr">Listen Live</a>
+      <a href="#log">Skip Log</a>
+      <a href="#gear">Gear</a>
+      <a href="#guestbook">Guestbook</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="border-bottom:1px solid var(--line);padding-top:72px;">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">40 Channels · No License Required</div>
+        <h1>CB Radio, <span>finally modernized.</span></h1>
+        <p class="lead">Channel guide, legal power limits, 10-codes, skip conditions, and gear that's actually worth buying — built for the CB band, not a 2004 forum.</p>
+        <div class="hero-ctas">
+          <a href="#channels" class="btn btn-primary">Browse Channel Guide →</a>
+          <a href="#skip" class="btn btn-ghost">Check Skip Conditions</a>
+        </div>
+      </div>
+
+      <div class="dial-panel">
+        <div class="dial-readout">
+          <span class="ch-num" id="readout-ch">CH 19</span>
+          <span class="ch-freq" id="readout-freq">27.185 MHz</span>
+        </div>
+        <div class="dial-wrap">
+          <svg id="dial-svg" width="260" height="260" viewBox="0 0 260 260"></svg>
+        </div>
+        <div class="dial-info" id="dial-info">
+          <b>The trucker channel.</b> East–west long-haul chatter, road conditions, and the closest thing CB has to a town square.
+        </div>
+        <div class="dial-hint">DRAG OR CLICK A NUMBER TO TUNE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HANDLE GENERATOR ============ -->
+  <section id="handle" style="padding:44px 0;">
+    <div class="wrap">
+      <div class="handle-box">
+        <div class="handle-copy">
+          <div class="eyebrow">For Fun · Zero Signup</div>
+          <h2 style="font-size:20px;">Don't Have a Handle Yet?</h2>
+          <p style="font-size:13px;color:var(--text-dim);margin-top:6px;">Every CB operator needs an on-air nickname. Generate one, or roll again till one sticks.</p>
+        </div>
+        <div class="handle-output">
+          <div class="handle-readout" id="handle-readout">—</div>
+          <button class="btn btn-primary" id="handle-roll">🎲 Roll a Handle</button>
+          <button class="btn btn-ghost" id="handle-copy" style="display:none;">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHANNEL GUIDE ============ -->
+  <section id="channels">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Reference</div>
+        <h2>Full 40-Channel Guide</h2>
+        <p>Frequencies are fixed by the FCC nationwide. Channel <em>uses</em> below are widely-observed conventions, not law — regional norms vary, especially outside trucking corridors.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Ch</th><th>Freq (MHz)</th><th>Common Use</th></tr></thead>
+          <tbody id="channel-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEGAL ============ -->
+  <section id="legal" class="paper">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">FCC Part 95 · Subpart D</div>
+        <h2>What's Actually Legal</h2>
+        <p>CB is one of the only two-way radio services in the U.S. you can operate with zero license, zero test, and zero fee — as long as you stay inside these limits.</p>
+      </div>
+      <div class="cards3">
+        <div class="stat-card">
+          <div class="num">4W</div>
+          <div class="label">Max AM Power</div>
+          <p>Measured at the transmitter output. This is the ceiling for standard AM CB operation — no license needed.</p>
+        </div>
+        <div class="stat-card">
+          <div class="num">12W</div>
+          <div class="label">Max SSB (PEP)</div>
+          <p>Single-sideband is legal on channels 36–40 and gets more range per watt than AM, at the cost of needing an SSB-capable radio.</p>
+        </div>
+        <div class="stat-card">
+          <div class="num">$0</div>
+          <div class="label">License Required</div>
+          <p>Unlike GMRS ($35) or Ham (test required), CB has been license-free since 1983. Callsigns are optional, not mandatory.</p>
+        </div>
+      </div>
+      <div class="legal-note">
+        <b>Not legal:</b> "export radios" / linear amplifiers that push CB sets past 4W/12W, and antennas taller than 60 ft (or 20 ft above the tallest structure on the property). These are the two most common ways CB operators actually draw FCC attention.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SWR DOCTOR ============ -->
+  <section id="swr">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Diagnostic Tool · The One Nobody Built</div>
+        <h2>SWR Doctor</h2>
+        <p>The #1 thing every CB operator struggles with — and every guide answers with a wall of text. Enter your two SWR readings and get an instant, specific diagnosis: what's wrong and exactly what to do about it. <a href="/swr-calculator/" style="color:var(--orange);">Direct link to this tool →</a></p>
+      </div>
+
+      <div class="swr-tool">
+        <div class="swr-inputs">
+          <div class="swr-input-block">
+            <label>Channel 1 SWR<span>26.965 MHz — low end</span></label>
+            <input type="number" id="swr-ch1" step="0.1" min="1" max="10" placeholder="e.g. 2.4">
+          </div>
+          <div class="swr-vs">vs</div>
+          <div class="swr-input-block">
+            <label>Channel 40 SWR<span>27.405 MHz — high end</span></label>
+            <input type="number" id="swr-ch40" step="0.1" min="1" max="10" placeholder="e.g. 1.3">
+          </div>
+          <button class="btn btn-primary" id="swr-diagnose">Diagnose</button>
+        </div>
+
+        <div class="swr-result" id="swr-result" hidden>
+          <div class="swr-verdict" id="swr-verdict"></div>
+          <div class="swr-action" id="swr-action"></div>
+          <div class="swr-checklist" id="swr-checklist"></div>
+        </div>
+
+        <div class="swr-legend">
+          <div><span class="swr-dot" style="background:#7CFF9E"></span><b>Under 1.5</b> — excellent, you're done</div>
+          <div><span class="swr-dot" style="background:#ff6a1f"></span><b>1.5–2.0</b> — acceptable, usable</div>
+          <div><span class="swr-dot" style="background:#e0a030"></span><b>2.0–3.0</b> — tune it, degraded performance</div>
+          <div><span class="swr-dot" style="background:#c0392b"></span><b>Over 3.0</b> — stop transmitting, you can damage the radio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANTENNA PICKER ============ -->
+  <section id="antenna" class="paper">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Buyer's Tool · Skip the Forum Argument</div>
+        <h2 style="color:#20221c;">Which Antenna &amp; Mount For My Ride?</h2>
+        <p style="color:#5a5540;">Wrong antenna for your vehicle is the #1 reason installs disappoint. Answer two questions and get the right setup — plus the ground-plane warning nobody tells beginners until it's too late. <a href="/antenna-picker/" style="color:var(--orange-dim);font-weight:600;">Direct link to this tool →</a></p>
+      </div>
+
+      <div class="ap-tool">
+        <div class="ap-questions">
+          <div class="ap-q">
+            <label class="ap-label">What are you putting it on?</label>
+            <div class="ap-options" id="ap-vehicle"></div>
+          </div>
+          <div class="ap-q">
+            <label class="ap-label">What matters most?</label>
+            <div class="ap-options" id="ap-priority"></div>
+          </div>
+        </div>
+        <div class="ap-result" id="ap-result" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RADIO LEGALITY CHECKER ============ -->
+  <section id="legalcheck">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Sourced from FCC Enforcement Records</div>
+        <h2>Is My Radio Actually Legal?</h2>
+        <p>"Export" and "10-meter" radios are sold everywhere with no warning label. Owning one is legal. Transmitting on CB channels with one usually isn't. Search your model to find out. <a href="/is-my-radio-legal/" style="color:var(--orange);">Direct link to this tool →</a></p>
+      </div>
+
+      <div class="lc-tool">
+        <input type="text" id="lc-search" placeholder="Type your radio's brand or model — e.g. Galaxy DX2547, Cobra 200 GTL, Connex 3300">
+        <div class="lc-result" id="lc-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10-CODES ============ -->
+  <section id="codes">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">On-Air Shorthand</div>
+        <h2>10-Codes That Still Get Used</h2>
+        <p>CB borrowed these from police/emergency radio in the '60s and '70s. Half the original APCO list never caught on with hobbyists — here's the set that's actually still live on the band.</p>
+      </div>
+      <div class="code-grid" id="code-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ SKIP CONDITIONS ============ -->
+  <section id="skip" class="paper">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Live Data · Updated Automatically</div>
+        <h2>Today's Skip Outlook</h2>
+        <p>Pulled from NOAA Space Weather Prediction Center feeds and translated into a CB-specific score — no other CB site runs this. Refreshes automatically; no need to reload.</p>
+      </div>
+
+      <div class="outlook-card">
+        <div class="outlook-gauge">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="46" fill="none" stroke="#d8cfb2" stroke-width="9"/>
+            <circle id="gauge-arc" cx="55" cy="55" r="46" fill="none" stroke="#ff6a1f" stroke-width="9"
+                    stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289"
+                    style="transition:stroke-dashoffset 1s ease, stroke .3s;"/>
+          </svg>
+          <div class="gauge-label">
+            <span class="gauge-score" id="gauge-score" style="color:#20221c;">--</span>
+            <span class="gauge-unit" style="color:#8a836a;">/ 100</span>
+          </div>
+        </div>
+        <div class="outlook-body">
+          <span class="badge fair" id="outlook-badge">Loading…</span>
+          <p id="outlook-explainer" style="color:#5a5540;">Fetching current solar flux and geomagnetic data…</p>
+          <div class="outlook-stats">
+            <div><div class="v" style="color:#20221c;" id="stat-sfi">—</div><div class="k" style="color:#8a836a;">Solar Flux</div></div>
+            <div><div class="v" style="color:#20221c;" id="stat-kp">—</div><div class="k" style="color:#8a836a;">K-index</div></div>
+            <div><div class="v" style="color:#20221c;" id="stat-es">—</div><div class="k" style="color:#8a836a;">Es Season</div></div>
+          </div>
+          <div class="outlook-meta" style="color:#8a836a;" id="outlook-updated"></div>
+        </div>
+      </div>
+
+      <div class="skip-grid">
+        <div class="skip-diagram">
+          <svg width="100%" viewBox="0 0 400 220" style="display:block;">
+            <rect x="0" y="0" width="400" height="220" fill="#14171a" rx="4"/>
+            <path d="M 0 200 Q 200 190 400 200" stroke="#3a4046" stroke-width="2" fill="none"/>
+            <path d="M 0 70 L 400 70" stroke="#2c3238" stroke-width="1" stroke-dasharray="4 5"/>
+            <text x="10" y="64" font-family="IBM Plex Mono" font-size="9" fill="#7d848c">SPORADIC-E LAYER (~55–75 MI UP)</text>
+            <circle cx="60" cy="196" r="4" fill="#ff6a1f"/>
+            <text x="46" y="215" font-family="IBM Plex Mono" font-size="9" fill="#c9ced4">TX</text>
+            <circle cx="340" cy="196" r="4" fill="#7CFF9E"/>
+            <text x="326" y="215" font-family="IBM Plex Mono" font-size="9" fill="#c9ced4">RX</text>
+            <path d="M 60 196 Q 130 90 200 70" stroke="#ff6a1f" stroke-width="1.5" fill="none" opacity="0.85"/>
+            <path d="M 200 70 Q 270 90 340 196" stroke="#7CFF9E" stroke-width="1.5" fill="none" opacity="0.85"/>
+            <text x="130" y="55" font-family="IBM Plex Mono" font-size="9" fill="#ff9d5c">DENSE IONIZED PATCH REFLECTS SIGNAL</text>
+          </svg>
+          <div class="skip-legend">
+            <span><span class="dot" style="background:#ff6a1f"></span>Outbound signal</span>
+            <span><span class="dot" style="background:#7CFF9E"></span>Returns to ground 500–1400 mi away</span>
+          </div>
+        </div>
+        <div class="skip-copy">
+          <h3>It's usually Sporadic-E, not solar skip</h3>
+          <p>Most CB/11-meter skip is <b style="color:var(--text);">Sporadic-E (Es)</b> — dense, patchy ionized clouds ~60 miles up that reflect 27 MHz easily. It's mostly a <em>seasonal</em> phenomenon (peaks May–August) and largely independent of the solar cycle. True F2-layer solar skip on 11m does happen, but only during strong solar-maximum periods with sustained high solar flux — it's the rarer of the two mechanisms on this band.</p>
+          <h3>When to listen for it</h3>
+          <p>Watch Channel 6 (26.965 MHz + freeband) first — nicknamed the "Superbowl channel" because that's where skip-hunters congregate. If Ch. 19 suddenly fills with unfamiliar accents and calls from three states away, that's your sign. Es tends to open in short windows, often mid-morning through evening.</p>
+        </div>
+      </div>
+      <div class="mechanism-note">Note: this outlook estimates <b>overall favorability</b> from public NOAA data + seasonal Es patterns. It's directional, not a minute-by-minute forecast — Sporadic-E specifically can open and close in under an hour with little warning.</div>
+    </div>
+  </section>
+
+  <!-- ============ LISTEN LIVE (SDR) ============ -->
+  <section id="sdr" class="paper">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Free · No Radio Required</div>
+        <h2 style="color:#20221c;">Listen Live Before You Key Up</h2>
+        <p style="color:#5a5540;">Public KiwiSDR receivers are general-coverage radios that happen to cover 27 MHz for free — you can hear real CB traffic (and check if skip is actually running) straight from your browser, no radio purchase needed. Receive-only — you can't transmit through these.</p>
+      </div>
+
+      <div class="sdr-grid" id="sdr-grid"></div>
+      <div class="sdr-more">
+        These quick-tune links point at one specific public receiver — like any hobbyist-run hardware, it can go offline. If a link doesn't load, browse the
+        <a href="https://rx.kiwisdr.com/public/" target="_blank" rel="noopener">full public KiwiSDR directory</a>
+        or the <a href="https://rx.skywavelinux.com/" target="_blank" rel="noopener">interactive receiver map</a> and tune to any frequency between 26.965–27.405 MHz yourself.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKIP SPOTS ============ -->
+  <section id="spots">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Community Network · Growing</div>
+        <h2>Skip Spots</h2>
+        <p>The CB hobby has never had a live spotting network like ham radio's DX clusters. This is the first. When skip is running, post what you're hearing and see it appear for everyone else in real time.</p>
+      </div>
+
+      <div class="spots-grid">
+        <div class="spots-form">
+          <div class="field">
+            <label>Channel</label>
+            <select id="spot-channel"></select>
+          </div>
+          <div class="field">
+            <label>Your State</label>
+            <select id="spot-state"></select>
+          </div>
+          <div class="field">
+            <label>What are you hearing?</label>
+            <input type="text" id="spot-message" maxlength="140" placeholder="e.g. Working stations out of TX and OK, strong signal">
+          </div>
+          <input type="text" id="spot-hp" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+          <button class="btn btn-primary btn-block" id="spot-submit">📡 Post a Spot</button>
+          <div id="spot-status" style="font-size:11.5px;color:var(--text-faint);margin-top:10px;font-family:var(--font-mono);"></div>
+        </div>
+        <div class="spots-feed" id="spots-feed">
+          <div class="log-empty">Loading live spots…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKIP LOG ============ -->
+  <section id="log">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Your Data, Your Browser</div>
+        <h2>Skip Log</h2>
+        <p>Track every long-distance catch and watch your states-worked map fill in. Nothing leaves your browser — no account, no server, no ads on your data.</p>
+      </div>
+
+      <div class="badge-strip" id="badge-strip"></div>
+
+      <div class="log-grid">
+        <div class="log-form">
+          <div class="field">
+            <label>Date</label>
+            <input type="date" id="log-date">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Channel</label>
+              <select id="log-channel"></select>
+            </div>
+            <div class="field">
+              <label>State / Region Worked</label>
+              <select id="log-state"></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Est. Distance (mi, optional)</label>
+            <input type="number" id="log-distance" placeholder="e.g. 640">
+          </div>
+          <div class="field">
+            <label>Notes</label>
+            <textarea id="log-notes" placeholder="Callsign/handle, conditions, anything worth remembering"></textarea>
+          </div>
+          <button class="btn btn-primary btn-block" id="log-submit">+ Log This Catch</button>
+        </div>
+
+        <div>
+          <div class="states-grid" id="states-grid"></div>
+          <div class="log-table-wrap">
+            <table>
+              <thead><tr><th>Date</th><th>Ch</th><th>Worked</th><th>Dist.</th><th></th></tr></thead>
+              <tbody id="log-table-body"></tbody>
+            </table>
+            <div class="log-empty" id="log-empty">No catches logged yet — your first entry starts the map.</div>
+          </div>
+          <div class="log-actions">
+            <button class="btn btn-ghost" id="log-export">Export as Text</button>
+            <button class="btn btn-ghost" id="log-clear">Clear All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GEAR ============ -->
+  <section id="gear">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Buyer's Guide</div>
+        <h2>Gear Worth Your Money</h2>
+        <p>No sponsored placements — these are the sets and antennas that consistently show up in long-term owner reviews, not the ones with the biggest ad budget.</p>
+      </div>
+      <div class="gear-grid" id="gear-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ GUESTBOOK ============ -->
+  <section id="guestbook" class="paper">
+    <div class="wrap" style="max-width:760px;">
+      <div class="section-head">
+        <div class="eyebrow">Sign In · No Account Needed</div>
+        <h2 style="color:#20221c;">The Guestbook</h2>
+        <p style="color:#5a5540;">Old CB tradition, brought online: leave your handle, where you're transmitting from, and what you run. No login, no account — just like signing a logbook.</p>
+      </div>
+
+      <form name="guestbook" method="POST" data-netlify="true" netlify-honeypot="gb-hp" id="guestbook-form" class="gb-form">
+        <input type="hidden" name="form-name" value="guestbook">
+        <p style="display:none;"><label>Don't fill this out: <input name="gb-hp"></label></p>
+        <div class="gb-row">
+          <input type="text" name="handle" placeholder="Your handle" required maxlength="40">
+          <input type="text" name="location" placeholder="Location (e.g. Gilbert, AZ)" maxlength="40">
+        </div>
+        <input type="text" name="rig" placeholder="What you run (e.g. Cobra 29 LTD + Wilson 1000)" maxlength="80">
+        <textarea name="message" placeholder="Leave a note" maxlength="200" required></textarea>
+        <button type="submit" class="btn btn-primary">Sign the Guestbook</button>
+        <div class="gb-note">Entries are reviewed before they appear publicly below — this keeps the log spam-free.</div>
+      </form>
+
+      <div class="gb-entries" id="gb-entries">
+        <div class="spot-offline">The guestbook is just opening.<br>Be the first signature — sign above and it'll appear here once reviewed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq">
+    <div class="wrap" style="max-width:820px;">
+      <div class="section-head">
+        <div class="eyebrow">Before You Ask on the Forum</div>
+        <h2>Frequently Asked</h2>
+      </div>
+      <div id="faq-list"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>© <span id="year"></span> CB Radio HQ. Not affiliated with the FCC, REACT International, or any radio manufacturer.</div>
+      <div style="display:flex;gap:18px;">
+        <a href="#channels">Channels</a>
+        <a href="#legal">Legal</a>
+        <a href="#codes">10-Codes</a>
+        <a href="#gear">Gear</a>
+        <a href="mailto:cbradiohq@gmail.com">Contact</a>
+      </div>
+    </div>
+    <div class="affiliate-disclosure">
+      As an Amazon Associate, CB Radio HQ earns from qualifying purchases. Product links on this site may be affiliate links — this costs you nothing extra and helps keep the reference material free.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* =====================================================
+   CHANNEL DATA — 40 channels, freq + common use + tag
+   ===================================================== */
+const CHANNELS = [
+  {ch:1,freq:"26.965",use:"General chat / travelers",tag:null},
+  {ch:2,freq:"26.975",use:"General chat",tag:null},
+  {ch:3,freq:"26.985",use:"General chat, some regional off-road use",tag:null},
+  {ch:4,freq:"27.005",use:"Off-road / 4x4 club convoy channel (unofficial, widespread)",tag:"4x4"},
+  {ch:5,freq:"27.015",use:"General chat",tag:null},
+  {ch:6,freq:"27.025",use:'"Superbowl channel" — skip/DX hangout, heaviest during solar skip',tag:"SKIP"},
+  {ch:7,freq:"27.035",use:"General chat",tag:null},
+  {ch:8,freq:"27.055",use:"General chat",tag:null},
+  {ch:9,freq:"27.065",use:"Emergency / REACT monitoring channel — keep clear for real emergencies",tag:"EMERGENCY"},
+  {ch:10,freq:"27.075",use:"Regional travelers info in some states; general elsewhere",tag:null},
+  {ch:11,freq:"27.085",use:"Historically the pre-1970s calling channel; general chat today",tag:null},
+  {ch:12,freq:"27.105",use:"General chat",tag:null},
+  {ch:13,freq:"27.115",use:"Marina / RV park channel in coastal & lake regions",tag:null},
+  {ch:14,freq:"27.125",use:"Default handheld/walkie-talkie channel — often crowded",tag:null},
+  {ch:15,freq:"27.135",use:"General chat",tag:null},
+  {ch:16,freq:"27.155",use:"General chat, some regional skip activity",tag:null},
+  {ch:17,freq:"27.165",use:"North–south interstate trucker channel (regional convention)",tag:"TRUCKER"},
+  {ch:18,freq:"27.175",use:"General chat",tag:null},
+  {ch:19,freq:"27.185",use:"THE trucker channel — east–west long-haul, road conditions",tag:"TRUCKER"},
+  {ch:20,freq:"27.205",use:"General chat",tag:null},
+  {ch:21,freq:"27.215",use:"General chat",tag:null},
+  {ch:22,freq:"27.225",use:"General chat",tag:null},
+  {ch:23,freq:"27.235",use:"General chat (historically shared w/ RC before 1970s reallocation)",tag:null},
+  {ch:24,freq:"27.245",use:"General chat",tag:null},
+  {ch:25,freq:"27.255",use:"General chat",tag:null},
+  {ch:26,freq:"27.265",use:"General chat",tag:null},
+  {ch:27,freq:"27.275",use:"General chat",tag:null},
+  {ch:28,freq:"27.285",use:"General chat, some DX/skip use",tag:null},
+  {ch:29,freq:"27.295",use:"General chat",tag:null},
+  {ch:30,freq:"27.305",use:"General chat",tag:null},
+  {ch:31,freq:"27.315",use:"General chat",tag:null},
+  {ch:32,freq:"27.325",use:"General chat",tag:null},
+  {ch:33,freq:"27.335",use:"General chat",tag:null},
+  {ch:34,freq:"27.345",use:"General chat",tag:null},
+  {ch:35,freq:"27.355",use:"General chat",tag:null},
+  {ch:36,freq:"27.365",use:"SSB — 12W PEP legal here and up",tag:"SSB"},
+  {ch:37,freq:"27.375",use:"SSB DX / long-distance chasing",tag:"SSB"},
+  {ch:38,freq:"27.385",use:"SSB — most active SSB DX channel on the band",tag:"SSB"},
+  {ch:39,freq:"27.395",use:"SSB general",tag:"SSB"},
+  {ch:40,freq:"27.405",use:"SSB — trucker SSB overflow from Ch.19",tag:"SSB"}
+];
+
+const tbody = document.getElementById('channel-table-body');
+CHANNELS.forEach(c=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td class="ch">${String(c.ch).padStart(2,'0')}</td>
+                   <td class="freq">${c.freq} MHz</td>
+                   <td>${c.tag?`<span class="tag ${c.tag==='EMERGENCY'||c.tag==='TRUCKER'?'hot':''}">${c.tag}</span>`:''}${c.use}</td>`;
+  tbody.appendChild(tr);
+});
+
+/* =====================================================
+   ROTARY DIAL — signature interactive element
+   ===================================================== */
+const svg = document.getElementById('dial-svg');
+const cx=130, cy=130, rOuter=112, rInner=94, needleR=100;
+const ns = "http://www.w3.org/2000/svg";
+
+function polar(cxp,cyp,r,angleDeg){
+  const a = (angleDeg-90) * Math.PI/180;
+  return [cxp + r*Math.cos(a), cyp + r*Math.sin(a)];
+}
+
+// base ring
+const ring = document.createElementNS(ns,'circle');
+ring.setAttribute('cx',cx); ring.setAttribute('cy',cy); ring.setAttribute('r',rOuter);
+ring.setAttribute('fill','none'); ring.setAttribute('stroke','#3a4046'); ring.setAttribute('stroke-width','1.5');
+svg.appendChild(ring);
+const ringInner = document.createElementNS(ns,'circle');
+ringInner.setAttribute('cx',cx); ringInner.setAttribute('cy',cy); ringInner.setAttribute('r',rInner-14);
+ringInner.setAttribute('fill','#0f1214'); ringInner.setAttribute('stroke','#2c3238');
+svg.appendChild(ringInner);
+
+const tickGroup = document.createElementNS(ns,'g');
+svg.appendChild(tickGroup);
+
+const specialSet = new Set([9,19,6,36,37,38,39,40]);
+
+CHANNELS.forEach((c,i)=>{
+  const angle = (360/40) * i;
+  const [x1,y1] = polar(cx,cy,rInner+6,angle);
+  const [x2,y2] = polar(cx,cy,rOuter,angle);
+  const line = document.createElementNS(ns,'line');
+  line.setAttribute('x1',x1);line.setAttribute('y1',y1);
+  line.setAttribute('x2',x2);line.setAttribute('y2',y2);
+  line.setAttribute('stroke', specialSet.has(c.ch) ? '#c9ced4' : '#3a4046');
+  line.setAttribute('stroke-width', specialSet.has(c.ch) ? '1.6' : '1');
+  tickGroup.appendChild(line);
+
+  if(c.ch % 5 === 0 || c.ch === 1){
+    const [tx,ty] = polar(cx,cy,rOuter+11,angle);
+    const label = document.createElementNS(ns,'text');
+    label.setAttribute('x',tx); label.setAttribute('y',ty+3);
+    label.setAttribute('font-family','IBM Plex Mono'); label.setAttribute('font-size','8.5');
+    label.setAttribute('fill','#7d848c'); label.setAttribute('text-anchor','middle');
+    label.textContent = c.ch;
+    svg.appendChild(label);
+  }
+
+  const hit = document.createElementNS(ns,'circle');
+  const [hx,hy] = polar(cx,cy,rOuter+2,angle);
+  hit.setAttribute('cx',hx); hit.setAttribute('cy',hy); hit.setAttribute('r',7);
+  hit.setAttribute('fill','transparent'); hit.style.cursor='pointer';
+  hit.dataset.ch = c.ch;
+  hit.addEventListener('click',()=>tuneTo(c.ch));
+  svg.appendChild(hit);
+});
+
+// needle
+const needle = document.createElementNS(ns,'line');
+needle.setAttribute('x1',cx); needle.setAttribute('y1',cy);
+needle.setAttribute('stroke','#ff6a1f'); needle.setAttribute('stroke-width','2.5');
+needle.setAttribute('stroke-linecap','round');
+needle.style.transition = 'all .25s cubic-bezier(.3,1.4,.4,1)';
+svg.appendChild(needle);
+
+const hub = document.createElementNS(ns,'circle');
+hub.setAttribute('cx',cx); hub.setAttribute('cy',cy); hub.setAttribute('r',6);
+hub.setAttribute('fill','#c9ced4');
+svg.appendChild(hub);
+
+function tuneTo(chNum){
+  const c = CHANNELS.find(x=>x.ch===chNum);
+  const idx = CHANNELS.indexOf(c);
+  const angle = (360/40) * idx;
+  const [nx,ny] = polar(cx,cy,needleR,angle);
+  needle.setAttribute('x2',nx); needle.setAttribute('y2',ny);
+  document.getElementById('readout-ch').textContent = 'CH ' + c.ch;
+  document.getElementById('readout-freq').textContent = c.freq + ' MHz';
+  const infoBold = c.tag ? `<b>${c.tag} channel.</b> ` : `<b>General chat.</b> `;
+  document.getElementById('dial-info').innerHTML = infoBold + c.use.charAt(0).toUpperCase()+c.use.slice(1) + '.';
+}
+
+// drag support
+let dragging=false;
+function angleFromEvent(evt){
+  const rect = svg.getBoundingClientRect();
+  const px = (evt.touches?evt.touches[0].clientX:evt.clientX) - rect.left - cx;
+  const py = (evt.touches?evt.touches[0].clientY:evt.clientY) - rect.top - cy;
+  let deg = Math.atan2(py,px) * 180/Math.PI + 90;
+  if(deg<0) deg+=360;
+  return deg;
+}
+function nearestChannel(deg){
+  const idx = Math.round(deg / (360/40)) % 40;
+  return CHANNELS[idx].ch;
+}
+svg.addEventListener('pointerdown',e=>{dragging=true;tuneTo(nearestChannel(angleFromEvent(e)));});
+window.addEventListener('pointermove',e=>{if(dragging)tuneTo(nearestChannel(angleFromEvent(e)));});
+window.addEventListener('pointerup',()=>dragging=false);
+
+tuneTo(19); // initial state
+
+/* =====================================================
+   10-CODES
+   ===================================================== */
+const CODES = [
+  ["10-1","Receiving poorly"],["10-4","Message received / OK"],
+  ["10-9","Repeat message"],["10-10","Transmission complete, standing by"],
+  ["10-12","Visitors present, keep it clean"],["10-20","Location ('what's your 20')"],
+  ["10-33","Emergency traffic, clear channel"],["10-36","Correct time"],
+  ["10-42","Traffic accident at [location]"],["10-100","Restroom break"],
+  ["10-200","Need police assistance"],["Breaker","Requesting to break into a conversation"],
+  ["Copy","I heard and understood you"],["Handle","Your on-air nickname/callsign"],
+  ["Bear","Police / highway patrol"],["Smokey","State trooper (from Smokey Bear hats)"],
+  ["Eyeball","In-person meetup with someone you know from air"],["Good buddy","Friendly greeting (rarely used seriously since CB slang shifted)"]
+];
+const codeGrid = document.getElementById('code-grid');
+CODES.forEach(([code,meaning])=>{
+  const div = document.createElement('div');
+  div.className='code-cell';
+  div.innerHTML = `<div class="code">${code}</div><div class="meaning">${meaning}</div>`;
+  codeGrid.appendChild(div);
+});
+
+/* =====================================================
+   GEAR (placeholder Amazon Associate links — swap tag)
+   ===================================================== */
+const AMZ_TAG = "cbradiohq-20"; // live Amazon Associates tag
+const GEAR = [
+  {kicker:"Best all-around mobile",name:"Cobra 29 LTD Classic",note:"The reference mobile CB for 50+ years. NOAA weather, SWR meter built in.",est:"$90–110",asin:"B0BVGTZCLB"},
+  {kicker:"Best SSB option",name:"Galaxy DX-959B",note:"Adds 12W SSB range for real skip/DX chasing beyond AM's 4W ceiling — true AM/SSB radio, unlike AM-only 'SSB-adjacent' models.",est:"$160–200",asin:"B00V8C1N96"},
+  {kicker:"Best antenna (mobile)",name:"Wilson 1000 Magnet Mount",note:"Antenna matters more than radio wattage for real-world range — most range complaints are antenna problems.",est:"$45–90",asin:"B003H3L3U8"},
+  {kicker:"Best handheld",name:"Midland 75-822",note:"4W handheld for off-road groups and short-range convoy use, no base install needed.",est:"$50–70",asin:"B00000K2YR"},
+  {kicker:"Best SWR meter",name:"Workman SWR2T",note:"27MHz-specific CB tester — tune your antenna properly before you blame the radio. Non-negotiable first purchase.",est:"$20–30",asin:"B07DBTFKD9"},
+  {kicker:"Best base station",name:"Galaxy DX-2547",note:"Home-base AM/SSB unit for skip hunters who want a dedicated shack setup, not a truck install.",est:"$220–260",asin:"B002LMIQQU"}
+];
+const gearGrid = document.getElementById('gear-grid');
+GEAR.forEach(g=>{
+  const div = document.createElement('div');
+  div.className='gear-card';
+  div.innerHTML = `
+    <div class="kicker">${g.kicker}</div>
+    <h3>${g.name}</h3>
+    <p>${g.note}</p>
+    <div class="price-row">
+      <span class="est">${g.est}</span>
+      <a class="gear-link" href="https://www.amazon.com/dp/${g.asin}?tag=${AMZ_TAG}" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+    </div>`;
+  gearGrid.appendChild(div);
+});
+
+/* =====================================================
+   FAQ
+   ===================================================== */
+const FAQS = [
+  ["Do I need a license to use a CB radio?","No. CB has been license-free in the U.S. since 1983. You can key up and talk with zero paperwork, zero test, and zero fee — the only U.S. two-way radio service where that's fully true (GMRS requires a $35 license; ham requires a test)."],
+  ["What's the difference between CB and GMRS?","CB operates around 27 MHz with a hard 4W (AM) / 12W (SSB) power cap and no license. GMRS operates in the 462/467 MHz UHF band, allows up to 50W, supports repeaters for much longer range, and requires a $35 FCC license (no test) per family."],
+  ["Why does my range seem so short?","Almost always the antenna, not the radio. A poorly grounded or mistuned antenna can cut your real-world range to under a mile even on a legal 4W radio. Get an SWR meter before upgrading anything else."],
+  ["Are 'export radios' legal?","No. Export/10-meter radios that exceed the FCC's 4W AM / 12W SSB limits, or that transmit outside the 40 authorized channels, are illegal for CB use in the U.S. even though they're widely sold online."],
+  ["Is CB radio actually still used, or is it dead?","Still very active — long-haul trucking (Ch.19 in particular), off-road/4x4 clubs, agricultural operations, and a real prepper/emergency-comms community all rely on it daily. It's smaller than its 1970s peak but far from dead."]
+];
+const faqList = document.getElementById('faq-list');
+FAQS.forEach(([q,a])=>{
+  const item = document.createElement('div');
+  item.className='faq-item';
+  item.innerHTML = `<button class="faq-q">${q}<span class="plus">+</span></button>
+                     <div class="faq-a"><p>${a}</p></div>`;
+  const btn = item.querySelector('.faq-q');
+  const ans = item.querySelector('.faq-a');
+  btn.addEventListener('click',()=>{
+    const isOpen = item.classList.toggle('open');
+    ans.style.maxHeight = isOpen ? ans.scrollHeight+'px' : '0';
+  });
+  faqList.appendChild(item);
+});
+
+/* =====================================================
+   LIVE SKIP OUTLOOK — reads data/space-weather.json,
+   written by skip_update.py via GitHub Actions (see repo).
+   Falls back to a static snapshot if the file is missing
+   or the fetch fails, same pattern as ShortwaveHQ's schedule.json.
+   ===================================================== */
+const FALLBACK_WEATHER = {
+  updated: null,
+  sfi: 110, sfi_trend: -85,
+  kp: null,
+  es_season: {active:true, strength:"peak", note:"Peak Sporadic-E season — the single best window of the year for CB skip."},
+  skip_score: 60, skip_label: "Good",
+  source: "cached snapshot — live feed unavailable"
+};
+
+function renderOutlook(data){
+  const score = Math.max(0, Math.min(100, data.skip_score));
+  const circumference = 289;
+  const offset = circumference - (circumference * score/100);
+  const arc = document.getElementById('gauge-arc');
+  arc.style.strokeDashoffset = offset;
+
+  let color = '#c0392b', badgeClass='low';
+  if(score>=70){color='#1f8f4d';badgeClass='excellent';}
+  else if(score>=45){color='#ff6a1f';badgeClass='good';}
+  else if(score>=25){color='#8a836a';badgeClass='fair';}
+  arc.setAttribute('stroke', color);
+
+  document.getElementById('gauge-score').textContent = score;
+  const badgeEl = document.getElementById('outlook-badge');
+  badgeEl.textContent = data.skip_label;
+  badgeEl.className = 'badge ' + badgeClass;
+
+  document.getElementById('stat-sfi').textContent = data.sfi ?? '—';
+  document.getElementById('stat-kp').textContent = data.kp !== null && data.kp !== undefined ? data.kp : 'pending';
+  document.getElementById('stat-es').textContent = data.es_season.strength.charAt(0).toUpperCase()+data.es_season.strength.slice(1);
+
+  document.getElementById('outlook-explainer').textContent = data.es_season.note;
+
+  const updatedEl = document.getElementById('outlook-updated');
+  if(data.updated){
+    const d = new Date(data.updated);
+    updatedEl.textContent = `Last updated ${d.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})} UTC · Source: ${data.source||'NOAA SWPC'}`;
+  } else {
+    updatedEl.textContent = `Source: ${data.source}`;
+  }
+}
+
+fetch('data/space-weather.json', {cache:'no-store'})
+  .then(r => { if(!r.ok) throw new Error('no data file'); return r.json(); })
+  .then(data => renderOutlook(data))
+  .catch(() => renderOutlook(FALLBACK_WEATHER));
+
+/* =====================================================
+   SKIP LOG — localStorage personal logbook
+   ===================================================== */
+const US_STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DX"];
+const LOG_KEY = 'cbrhq_skip_log_v1';
+
+function getLog(){ try{ return JSON.parse(localStorage.getItem(LOG_KEY))||[]; }catch(e){ return []; } }
+function saveLog(entries){ localStorage.setItem(LOG_KEY, JSON.stringify(entries)); }
+
+// populate channel select
+const logChannelSel = document.getElementById('log-channel');
+CHANNELS.forEach(c=>{
+  const opt = document.createElement('option');
+  opt.value = c.ch; opt.textContent = `Ch ${c.ch} — ${c.freq} MHz`;
+  logChannelSel.appendChild(opt);
+});
+logChannelSel.value = 19;
+
+// populate state select
+const logStateSel = document.getElementById('log-state');
+US_STATES.forEach(s=>{
+  const opt = document.createElement('option');
+  opt.value = s; opt.textContent = s === 'DX' ? 'DX / Other Country' : s;
+  logStateSel.appendChild(opt);
+});
+
+// default date = today
+document.getElementById('log-date').value = new Date().toISOString().slice(0,10);
+
+function renderStatesGrid(entries){
+  const worked = new Set(entries.map(e=>e.state));
+  const grid = document.getElementById('states-grid');
+  grid.innerHTML = '';
+  US_STATES.forEach(s=>{
+    const chip = document.createElement('div');
+    chip.className = 'state-chip' + (worked.has(s) ? ' hit' : '');
+    chip.textContent = s;
+    grid.appendChild(chip);
+  });
+  return worked.size;
+}
+
+function badgeForCount(n){
+  if(n>=30) return "Legendary Ears";
+  if(n>=15) return "DX Chaser";
+  if(n>=5) return "Skip Hunter";
+  if(n>=1) return "Rookie";
+  return "No catches yet";
+}
+
+function renderLogTable(entries){
+  const tbody = document.getElementById('log-table-body');
+  const empty = document.getElementById('log-empty');
+  tbody.innerHTML = '';
+  if(entries.length===0){ empty.style.display='block'; return; }
+  empty.style.display='none';
+  entries.slice().reverse().forEach((e)=>{
+    const realIdx = entries.indexOf(e);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="freq">${e.date}</td><td class="ch">${e.channel}</td><td>${e.state}${e.notes?` <span style="color:var(--text-faint);font-size:11px;">— ${e.notes}</span>`:''}</td><td class="freq">${e.distance?e.distance+' mi':'—'}</td><td><button class="log-row-del" data-idx="${realIdx}" aria-label="Delete">×</button></td>`;
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('.log-row-del').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const entries = getLog();
+      entries.splice(parseInt(btn.dataset.idx),1);
+      saveLog(entries);
+      refreshLogUI();
+    });
+  });
+}
+
+function renderBadgeStrip(entries){
+  const strip = document.getElementById('badge-strip');
+  const uniqueStates = renderStatesGrid(entries);
+  const rank = badgeForCount(uniqueStates);
+  strip.innerHTML = `
+    <div class="badge-pill"><span class="n">${entries.length}</span>Total Catches</div>
+    <div class="badge-pill"><span class="n">${uniqueStates}</span>States/Regions Worked</div>
+    <div class="badge-pill"><span class="n">${rank}</span>Current Rank</div>`;
+}
+
+function refreshLogUI(){
+  const entries = getLog();
+  renderBadgeStrip(entries);
+  renderLogTable(entries);
+}
+
+document.getElementById('log-submit').addEventListener('click', ()=>{
+  const date = document.getElementById('log-date').value || new Date().toISOString().slice(0,10);
+  const channel = logChannelSel.value;
+  const state = logStateSel.value;
+  const distance = document.getElementById('log-distance').value;
+  const notes = document.getElementById('log-notes').value.trim();
+  const entries = getLog();
+  entries.push({date, channel, state, distance, notes});
+  saveLog(entries);
+  document.getElementById('log-distance').value='';
+  document.getElementById('log-notes').value='';
+  refreshLogUI();
+});
+
+document.getElementById('log-clear').addEventListener('click', ()=>{
+  if(confirm('Clear your entire skip log? This cannot be undone.')){
+    saveLog([]);
+    refreshLogUI();
+  }
+});
+
+document.getElementById('log-export').addEventListener('click', ()=>{
+  const entries = getLog();
+  if(entries.length===0){ alert('No entries to export yet.'); return; }
+  const lines = entries.map(e=>`${e.date}  Ch${e.channel}  ${e.state}${e.distance?`  ${e.distance}mi`:''}${e.notes?`  — ${e.notes}`:''}`);
+  const text = "CB RADIO HQ — SKIP LOG EXPORT\n" + "=".repeat(32) + "\n" + lines.join('\n');
+  const blob = new Blob([text], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'cb-skip-log.txt';
+  a.click();
+});
+
+refreshLogUI();
+
+/* =====================================================
+   HANDLE GENERATOR — quick, shareable, zero backend
+   ===================================================== */
+const HANDLE_ADJ = ["Rusty","Wild","Lone","Iron","Copper","Dusty","Midnight","Silent","Rolling","High","Backwoods","Gravel","Steel","Old","Renegade","Blackout","Tumbleweed","Highway","Northbound","Diesel"];
+const HANDLE_NOUN = ["Wolf","Trucker","Rambler","Ranger","Hawk","Drifter","Cowboy","Wrench","Coyote","Trailblazer","Roadrunner","Outlaw","Nomad","Scout","Rider","Falcon","Maverick","Bandit","Wanderer","Hound"];
+
+function rollHandle(){
+  const a = HANDLE_ADJ[Math.floor(Math.random()*HANDLE_ADJ.length)];
+  const n = HANDLE_NOUN[Math.floor(Math.random()*HANDLE_NOUN.length)];
+  return `${a} ${n}`;
+}
+const handleReadout = document.getElementById('handle-readout');
+const handleCopyBtn = document.getElementById('handle-copy');
+document.getElementById('handle-roll').addEventListener('click', ()=>{
+  handleReadout.textContent = rollHandle();
+  handleCopyBtn.style.display = 'inline-flex';
+});
+handleCopyBtn.addEventListener('click', ()=>{
+  navigator.clipboard.writeText(handleReadout.textContent).then(()=>{
+    const orig = handleCopyBtn.textContent;
+    handleCopyBtn.textContent = 'Copied!';
+    setTimeout(()=>handleCopyBtn.textContent = orig, 1400);
+  });
+});
+
+/* =====================================================
+   SKIP SPOTS — live crowdsourced board
+   Backend: netlify/functions/skip-spots.js (Netlify Blobs)
+   Degrades gracefully if the API isn't deployed yet —
+   shows a clear offline state instead of breaking.
+   ===================================================== */
+const SPOTS_API = '/api/skip-spots';
+let spotsApiReachable = true;
+
+const spotChannelSel = document.getElementById('spot-channel');
+CHANNELS.forEach(c=>{
+  const opt = document.createElement('option');
+  opt.value = c.ch; opt.textContent = `Ch ${c.ch} — ${c.freq} MHz`;
+  spotChannelSel.appendChild(opt);
+});
+spotChannelSel.value = 19;
+
+const spotStateSel = document.getElementById('spot-state');
+US_STATES.forEach(s=>{
+  const opt = document.createElement('option');
+  opt.value = s; opt.textContent = s === 'DX' ? 'DX / Other Country' : s;
+  spotStateSel.appendChild(opt);
+});
+
+function timeAgo(ts){
+  const diffSec = Math.floor((Date.now()-ts)/1000);
+  if(diffSec<60) return 'just now';
+  const m = Math.floor(diffSec/60);
+  if(m<60) return `${m}m ago`;
+  const h = Math.floor(m/60);
+  return `${h}h ago`;
+}
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+async function loadSpots(){
+  const feed = document.getElementById('spots-feed');
+  try{
+    const res = await fetch(SPOTS_API, {cache:'no-store'});
+    if(!res.ok) throw new Error('api error');
+    const spots = await res.json();
+    spotsApiReachable = true;
+    if(!Array.isArray(spots) || spots.length===0){
+      feed.innerHTML = '<div class="spot-offline"><b style="color:var(--orange);">No active spots right now.</b><br>Skip comes and goes — when you catch a distant station, post it here and be the first on the board. Check back when conditions are up (watch the Skip Outlook above).</div>';
+      return;
+    }
+    feed.innerHTML = spots.map(s=>`
+      <div class="spot-item">
+        <span class="spot-ch-badge">CH ${escapeHtml(String(s.channel))}</span>
+        <div class="spot-body">
+          <div class="spot-meta">${escapeHtml(s.state)} · ${timeAgo(s.ts)}</div>
+          <div class="spot-msg">${escapeHtml(s.message || '(no note)')}</div>
+        </div>
+      </div>`).join('');
+  }catch(e){
+    spotsApiReachable = false;
+    feed.innerHTML = `<div class="spot-offline">Live spotting network not yet connected.<br>This board goes live once the site is deployed on Netlify with Functions enabled — see netlify/functions/skip-spots.js in the repo.</div>`;
+  }
+}
+
+document.getElementById('spot-submit').addEventListener('click', async ()=>{
+  const statusEl = document.getElementById('spot-status');
+  const message = document.getElementById('spot-message').value.trim();
+  const payload = {
+    channel: spotChannelSel.value,
+    state: spotStateSel.value,
+    message,
+    hp: document.getElementById('spot-hp').value // honeypot, should stay empty
+  };
+  if(!spotsApiReachable){
+    statusEl.textContent = 'Spotting network offline — deploy Netlify Functions to enable posting.';
+    return;
+  }
+  statusEl.textContent = 'Posting…';
+  try{
+    const res = await fetch(SPOTS_API, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('post failed');
+    document.getElementById('spot-message').value='';
+    statusEl.textContent = 'Posted ✓';
+    setTimeout(()=>statusEl.textContent='', 2500);
+    loadSpots();
+  }catch(e){
+    statusEl.textContent = 'Could not post — try again in a moment.';
+  }
+});
+
+loadSpots();
+setInterval(loadSpots, 25000); // poll every 25s — cheap, feels live
+
+/* ===TOOLJS:swr:START=== */
+/* =====================================================
+   SWR DOCTOR — deterministic antenna diagnosis
+   Logic (the part every guide buries in prose):
+     - SWR higher on Ch40 than Ch1  -> antenna too SHORT -> lengthen
+     - SWR higher on Ch1 than Ch40  -> antenna too LONG  -> shorten
+     - Both high & roughly equal     -> not a length issue: ground/coax/mount
+     - Both low                       -> tuned, done
+   ===================================================== */
+function diagnoseSWR(ch1, ch40){
+  const worst = Math.max(ch1, ch40);
+  const diff = ch1 - ch40; // positive = Ch1 worse = too long
+  const spread = Math.abs(diff);
+
+  // Fault case first: both readings high with little spread = system fault, not length
+  if(worst >= 3 && spread < 0.5){
+    return {
+      klass:'bad',
+      verdict:'System Fault — Not a Length Problem',
+      action:`Both ends read high and nearly equal (Ch1 <b>${ch1}</b>, Ch40 <b>${ch40}</b>). Adjusting antenna length won't fix this. High-and-flat almost always means power is being reflected before it reaches the antenna — a grounding, coax, or connector problem. <b>Do not transmit</b> above 3.0 or you risk your radio's final transistor.`,
+      title:'Check these, in order:',
+      checks:[
+        'Antenna mount ground — the mount must contact bare metal chassis, not paint or plastic. Scrape paint at the contact point.',
+        'Coax and PL-259 connectors — check for a pinched cable, a cold solder joint, or a center pin not making contact.',
+        'Ground plane — magnetic/fiberglass antennas need a metal surface under them. Fiberglass roof or plastic bed = no ground plane = high flat SWR.',
+        'Do a "dummy tune" — have someone hold the antenna in a new spot with a good ground before drilling a permanent mount.'
+      ]
+    };
+  }
+
+  // Both low = tuned
+  if(worst < 1.5){
+    return {
+      klass:'good',
+      verdict:'Tuned — You\'re Done',
+      action:`Both readings are under 1.5 (Ch1 <b>${ch1}</b>, Ch40 <b>${ch40}</b>). This is a healthy, efficient antenna system. Nothing to adjust — get on the air.`,
+      title:'Optional fine-tuning:',
+      checks:[
+        'If you want it perfect, the ideal is your lowest SWR sitting on your most-used channel (Ch 19 for most operators).',
+        'Re-check SWR seasonally or after any mount/coax change — readings drift.'
+      ]
+    };
+  }
+
+  // Length problem: figure out direction
+  const tooLong = diff > 0.2;
+  const tooShort = diff < -0.2;
+
+  if(tooShort){
+    return {
+      klass:'tune',
+      verdict:'Antenna Too Short — Lengthen It',
+      action:`Ch40 (<b>${ch40}</b>) reads higher than Ch1 (<b>${ch1}</b>). SWR climbing toward the high end of the band means your antenna is electrically <b>too short</b>. The fix is to lengthen it.`,
+      title:'How to lengthen:',
+      checks:[
+        'If your antenna has an adjustable tunable tip, raise/extend it slightly, then re-measure both channels.',
+        'On a fiberglass whip you cut too far — you can\'t add length back; add a spring or a longer stud, or replace the whip.',
+        'Make small changes (⅛ inch at a time on adjustable types), re-test Ch1 and Ch40 after each until they\'re balanced and both under 2.0.'
+      ]
+    };
+  }
+
+  if(tooLong){
+    return {
+      klass:'tune',
+      verdict:'Antenna Too Long — Shorten It',
+      action:`Ch1 (<b>${ch1}</b>) reads higher than Ch40 (<b>${ch40}</b>). SWR climbing toward the low end of the band means your antenna is electrically <b>too long</b>. The fix is to shorten it.`,
+      title:'How to shorten:',
+      checks:[
+        'If your antenna has an adjustable tunable tip, lower/retract it slightly, then re-measure both channels.',
+        'On a steel whip, trim in tiny increments — cut too much and you\'ll overshoot into "too short." Go slow.',
+        'Re-test Ch1 and Ch40 after each adjustment until they\'re balanced and both under 2.0.'
+      ]
+    };
+  }
+
+  // Balanced but elevated (both between ~1.5 and 3, small spread)
+  return {
+    klass:'tune',
+    verdict:'Close — Balanced but Elevated',
+    action:`Your readings are balanced across the band (Ch1 <b>${ch1}</b>, Ch40 <b>${ch40}</b>) but sitting higher than ideal. Length is roughly right; you're losing efficiency to installation quality.`,
+    title:'Squeeze it lower:',
+    checks:[
+      'Improve the mount ground — even a well-tuned antenna reads elevated on a marginal ground.',
+      'Raise the antenna higher / get more of it above the roofline — at least ⅔ of the antenna should clear the vehicle.',
+      'Move away from obstructions when measuring — buildings, walls, and people within a few feet skew readings.'
+    ]
+  };
+}
+
+const swrResult = document.getElementById('swr-result');
+document.getElementById('swr-diagnose').addEventListener('click', ()=>{
+  const ch1 = parseFloat(document.getElementById('swr-ch1').value);
+  const ch40 = parseFloat(document.getElementById('swr-ch40').value);
+  if(isNaN(ch1) || isNaN(ch40) || ch1 < 1 || ch40 < 1){
+    alert('Enter both SWR readings (they start at 1.0 — a reading below 1 isn\'t possible).');
+    return;
+  }
+  const dx = diagnoseSWR(ch1, ch40);
+  document.getElementById('swr-verdict').textContent = dx.verdict;
+  document.getElementById('swr-verdict').className = 'swr-verdict ' + dx.klass;
+  document.getElementById('swr-action').innerHTML = dx.action;
+  document.getElementById('swr-checklist').innerHTML =
+    `<h4>${dx.title}</h4><ul>${dx.checks.map(c=>`<li>${c}</li>`).join('')}</ul>`;
+  swrResult.hidden = false;
+  swrResult.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+/* ===TOOLJS:swr:END=== */
+
+/* ===TOOLJS:antenna:START=== */
+/* =====================================================
+   ANTENNA & MOUNT PICKER — deterministic recommender
+   Vehicle type sets ground-plane reality + best mount;
+   priority tunes the antenna length/type tradeoff.
+   Routes to the same Amazon Associate tag as the gear grid.
+   ===================================================== */
+const AP_VEHICLES = [
+  {id:'metal-car', label:'Car / SUV (metal roof)'},
+  {id:'pickup', label:'Pickup truck'},
+  {id:'jeep', label:'Jeep / fiberglass or soft top'},
+  {id:'semi', label:'Semi / big rig'},
+  {id:'base', label:'Home base station'}
+];
+const AP_PRIORITIES = [
+  {id:'range', label:'Maximum range'},
+  {id:'stealth', label:'Low profile / clearance'},
+  {id:'easy', label:'Easiest install'}
+];
+
+// products reference the same AMZ_TAG defined in the gear section
+function apLink(name, asin){
+  return `<div class="ap-pick"><div><div class="ap-pick-name">${name}</div><div class="ap-pick-cat">recommended pick</div></div><a href="https://www.amazon.com/dp/${asin}?tag=${AMZ_TAG}" target="_blank" rel="noopener sponsored">View on Amazon →</a></div>`;
+}
+
+function recommendAntenna(vehicle, priority){
+  // Ground-plane warning is the key insight beginners miss
+  const NGP_WARN = {klass:'danger', text:'⚠ Your vehicle has little or no metal "ground plane." A standard antenna will read high SWR and perform badly here — you need a no-ground-plane (NGP) antenna kit, or you must add a ground plane. This is the single most common install failure on Jeeps, fiberglass bodies, and boats.'};
+
+  const setups = {
+    'metal-car': {
+      range:   {mount:'Center-roof magnet mount', ant:'5\' center-load magnet antenna', why:'A metal roof is the best ground plane you have. Center-roof mounting puts the antenna at the highest, most symmetric point — the best range any single antenna can get short of a 102" whip.', pick:['Wilson 1000 Magnet Mount','B003H3L3U8']},
+      stealth: {mount:'Center-roof magnet mount', ant:'4\' fiberglass antenna', why:'Shorter whip trades some range for a lower profile that clears garages. Still roof-center for the ground plane.', pick:['Firestik FS4-B 4ft Fiberglass','B00317HUWU']},
+      easy:    {mount:'Magnet mount (no drilling)', ant:'Any magnet-base antenna', why:'Magnet mounts need zero drilling — set it on the roof, route the coax through a door seal, done. Perfect first install.', pick:['Wilson 1000 Magnet Mount','B003H3L3U8']}
+    },
+    'pickup': {
+      range:   {mount:'Bed-rail / stake-pocket mount', ant:'Wilson 1000-class magnet or hard mount', why:'A tall, quality antenna with a solid ground is what actually drives range — bed-rail mounting gives it a solid ground and gets the base up high.', pick:['Wilson 1000 Magnet Mount','B003H3L3U8']},
+      stealth: {mount:'Hood-channel or fender mount', ant:'4\' fiberglass antenna', why:'A 4\' fiberglass whip on a hood/fender mount clears most garages and drive-thrus while keeping usable range.', pick:['Firestik FS4-B 4ft Fiberglass','B00317HUWU']},
+      easy:    {mount:'Magnet mount on cab roof', ant:'5\' magnet antenna', why:'If your cab roof is steel, a magnet mount there is the no-drill option with good range. Route coax through the rear door seal.', pick:['Wilson 1000 Magnet Mount','B003H3L3U8']}
+    },
+    'jeep': {
+      range:   {mount:'Hood-hinge or tire-carrier mount', ant:'NGP (no-ground-plane) antenna kit', why:'Fiberglass/soft tops give an antenna nothing to work against. An NGP kit brings its own counterpoise built into the coax — this is the setup that actually works on a Jeep.', pick:['FireStik FG4648-B No-Ground-Plane Kit','B000X3EOPG'], warn:NGP_WARN},
+      stealth: {mount:'Hood-hinge mount', ant:'Short NGP antenna', why:'Keeps it out of the way for trails and clearance, while the NGP design solves the missing-ground-plane problem.', pick:['FireStik FG4648-B No-Ground-Plane Kit','B000X3EOPG'], warn:NGP_WARN},
+      easy:    {mount:'Hood-hinge bolt-on mount', ant:'NGP antenna kit', why:'Bolts to an existing hood hinge — no drilling into body panels. The NGP kit is non-negotiable here regardless of install effort.', pick:['FireStik FG4648-B No-Ground-Plane Kit','B000X3EOPG'], warn:NGP_WARN}
+    },
+    'semi': {
+      range:   {mount:'Dual mirror mounts (co-phased)', ant:'Two matched 4-5\' antennas', why:'Dual co-phased antennas on both mirrors add ~25% range in the direction of travel and kill the dead-spot behind your trailer. Standard big-rig setup — mount two of the same antenna model.', pick:['Firestik FS4-B 4ft Fiberglass (buy 2 for co-phase)','B00317HUWU']},
+      stealth: {mount:'Single mirror mount', ant:'4\' fiberglass antenna', why:'A single mirror-mount fiberglass whip is the low-fuss option if you don\'t want the dual-antenna look or wiring.', pick:['Firestik FS4-B 4ft Fiberglass','B00317HUWU']},
+      easy:    {mount:'Single mirror mount', ant:'4\' fiberglass antenna', why:'Clamps to the mirror bracket — no drilling into the cab. Get the antenna coil up high for best results.', pick:['Firestik FS4-B 4ft Fiberglass','B00317HUWU']}
+    },
+    'base': {
+      range:   {mount:'Roof-mounted vertical', ant:'Solarcon A-99 (17ft fiberglass base vertical)', why:'A rooftop base vertical mounted as high as you can get it is the range king for a home shack — height is everything for base stations.', pick:['Solarcon A-99 Base Antenna','B0017J7NQ2']},
+      stealth: {mount:'Attic or eave mount', ant:'Solarcon A-99 (indoor/attic mounted)', why:'If HOA or aesthetics rule out a roof mast, an attic-mounted vertical works, with some signal loss through the roof.', pick:['Solarcon A-99 Base Antenna','B0017J7NQ2']},
+      easy:    {mount:'Tripod / chimney mount', ant:'Solarcon A-99', why:'A tripod or chimney mount avoids running a tower — get it above the roofline and you\'re set.', pick:['Solarcon A-99 Base Antenna','B0017J7NQ2']}
+    }
+  };
+
+  const s = setups[vehicle][priority];
+  return {
+    title: `${s.ant}`,
+    mount: s.mount,
+    why: s.why,
+    warn: s.warn || null,
+    pick: s.pick
+  };
+}
+
+let apState = {vehicle:null, priority:null};
+function renderApOptions(){
+  const vBox = document.getElementById('ap-vehicle');
+  AP_VEHICLES.forEach(v=>{
+    const b = document.createElement('button');
+    b.className='ap-opt'; b.textContent=v.label; b.dataset.id=v.id;
+    b.addEventListener('click',()=>{ apState.vehicle=v.id; syncApSel(); maybeRenderAp(); });
+    vBox.appendChild(b);
+  });
+  const pBox = document.getElementById('ap-priority');
+  AP_PRIORITIES.forEach(p=>{
+    const b = document.createElement('button');
+    b.className='ap-opt'; b.textContent=p.label; b.dataset.id=p.id;
+    b.addEventListener('click',()=>{ apState.priority=p.id; syncApSel(); maybeRenderAp(); });
+    pBox.appendChild(b);
+  });
+}
+function syncApSel(){
+  document.querySelectorAll('#ap-vehicle .ap-opt').forEach(b=>b.classList.toggle('sel', b.dataset.id===apState.vehicle));
+  document.querySelectorAll('#ap-priority .ap-opt').forEach(b=>b.classList.toggle('sel', b.dataset.id===apState.priority));
+}
+function maybeRenderAp(){
+  if(!apState.vehicle || !apState.priority) return;
+  const r = recommendAntenna(apState.vehicle, apState.priority);
+  const box = document.getElementById('ap-result');
+  box.innerHTML = `
+    <div class="ap-rec-head">
+      <div class="ap-kicker">Your recommended setup</div>
+      <h3>${r.title} on a ${r.mount.toLowerCase()}</h3>
+    </div>
+    <div class="ap-rec-body">
+      ${r.warn ? `<div class="ap-warn ${r.warn.klass}">${r.warn.text}</div>` : ''}
+      <p>${r.why}</p>
+      ${apLink(r.pick[0], r.pick[1])}
+    </div>`;
+  box.hidden = false;
+}
+renderApOptions();
+/* ===TOOLJS:antenna:END=== */
+
+/* ===TOOLJS:legality:START=== */
+/* =====================================================
+   RADIO LEGALITY CHECKER
+   Model list sourced from an FCC enforcement action (2003 Wholesale
+   CB Radio notice of apparent liability) plus corroborating
+   manufacturer/forum documentation of "export" 10-meter radios
+   marketed for CB use. These radios are not Part 95 certified —
+   legal to own, and legal to use on the amateur 10m band if you
+   hold a ham license, but not legal to operate on CB channels.
+   ===================================================== */
+const EXPORT_RADIOS = [
+  "cobra 200 gtl dx","cobra 148 gtl","cobra 2000 gtl",
+  "connex 3300","connex cx-3300","connex 3300 hp","connex 3300hp-zx","connex 3300 plus","connex cx-3800",
+  "connex 4300 hp","connex 4300 hp 300","connex 4400","connex 4400 hp","connex 4600 turbo",
+  "connex 4800 dxl","connex 4800 hpe","connex deer hunter","connex general lee","connex general washington",
+  "galaxy 33hml","galaxy 44v","galaxy 45mp","galaxy 48t","galaxy 55","galaxy 55v","galaxy 66v",
+  "galaxy 73v","galaxy 77","galaxy 77hml","galaxy 88hl","galaxy 93t","galaxy 95t","galaxy 99v",
+  "galaxy 2517","galaxy 2527","galaxy 2547","galaxy melaka","galaxy saturn","galaxy saturn turbo",
+  "galaxy dx2547","galaxy dx959","galaxy dx949",
+  "general jackson","general grant","general stonewall jackson","general lee","general washington",
+  "general a.p. hill","general longstreet",
+  "magnum 257","magnum 357dx","magnum alpha force","magnum delta force","magnum mini",
+  "magnum omega force","magnum s3","magnum s3rf","magnum s6","magnum s9",
+  "mirage 33hp","mirage 44","mirage 88","mirage 99","mirage 2950","mirage 2950ex","mirage 2970",
+  "mirage 6600","mirage 9900",
+  "north star ns-3000","north star ns-9000",
+  "president grant","president jfk","president jackson","president lincoln","president hr-2510","president hr-2600",
+  "pro star 240",
+  "ranger ar-3500","rci-2900","rci-2950","rci-2950-dx","rci-2970","rci-2970-dx","rci-2980-wx",
+  "rci-2985-dx","rci-2995-dx","rci-6300","rci-6300 turbo","rci-6900","rci-6900 turbo",
+  "stryker sr-497hpc","anytone at-5555","superstar 3900","texas ranger"
+];
+
+function normalizeModel(s){
+  return s.trim().toLowerCase().replace(/[\s\-]+/g, '');
+}
+function checkRadioLegality(query){
+  const q = normalizeModel(query);
+  if(q.length < 2) return null;
+  return EXPORT_RADIOS.find(m => {
+    const nm = normalizeModel(m);
+    return q.includes(nm) || nm.includes(q);
+  }) || null;
+}
+
+const lcInput = document.getElementById('lc-search');
+const lcResult = document.getElementById('lc-result');
+let lcDebounce;
+lcInput.addEventListener('input', ()=>{
+  clearTimeout(lcDebounce);
+  lcDebounce = setTimeout(()=>{
+    const q = lcInput.value;
+    if(q.trim().length < 2){ lcResult.innerHTML=''; return; }
+    const match = checkRadioLegality(q);
+    if(match){
+      lcResult.innerHTML = `<div class="lc-hit">
+        <div class="lc-verdict">⚠ Not certified for CB use</div>
+        <p><b style="color:var(--text);">${q}</b> matches a known "export"/10-meter radio (${match}) that isn't FCC Part 95 certified. It's legal to <b style="color:var(--text);">own</b>. Transmitting with it on CB channels (26.965–27.405 MHz) isn't legal — these radios typically exceed the 4W/12W power limit and/or transmit outside the 40 authorized channels. If you hold an amateur (ham) radio license, the same radio may be legal to operate on the 10-meter amateur band instead.</p>
+      </div>`;
+    } else {
+      lcResult.innerHTML = `<div class="lc-clear">
+        <div class="lc-verdict">No match in our list</div>
+        <p>"${escapeHtmlLC(q)}" isn't in our list of known export/10-meter radios. That's a good sign, but not a certification — the definitive check is whether your radio has an <b style="color:var(--text);">FCC ID</b> printed on it (usually on the back or bottom) verified as Part 95 certified. If it was sold specifically as a "CB radio" from a mainstream brand (Cobra, Uniden, Midland) at a normal retail price, it's almost certainly fine.</p>
+      </div>`;
+    }
+  }, 250);
+});
+function escapeHtmlLC(str){ const d=document.createElement('div'); d.textContent=str; return d.innerHTML; }
+/* ===TOOLJS:legality:END=== */
+
+/* =====================================================
+   GUESTBOOK — Netlify Forms (no login), moderated display
+   Submissions go to the Netlify Forms dashboard for review.
+   Approved entries get added to data/guestbook.json by the
+   site owner, and are fetched/rendered here — same pattern
+   as ShortwaveHQ's guestbook.
+   ===================================================== */
+function renderGuestbook(entries){
+  const box = document.getElementById('gb-entries');
+  if(!Array.isArray(entries) || entries.length===0){
+    box.innerHTML = '<div class="spot-offline">The guestbook is just opening.<br>Be the first signature — sign above and it\'ll appear here once reviewed.</div>';
+    return;
+  }
+  box.innerHTML = entries.map(e => `
+    <div class="gb-entry">
+      <span class="gb-h">${escapeHtmlLC(e.handle)}</span>${e.location ? `<span class="gb-l">— ${escapeHtmlLC(e.location)}</span>` : ''}
+      ${e.rig ? `<span class="gb-l">· ${escapeHtmlLC(e.rig)}</span>` : ''}
+      <div class="gb-m">${escapeHtmlLC(e.message)}</div>
+    </div>`).join('');
+}
+
+fetch('data/guestbook.json', {cache:'no-store'})
+  .then(r => { if(!r.ok) throw new Error('no file'); return r.json(); })
+  .then(renderGuestbook)
+  .catch(()=>{ /* keep the default "just opening" empty state already in the HTML */ });
+
+// Netlify Forms handles the actual submission (data-netlify="true" on the
+// form does this natively on deploy); this just gives instant feedback
+// instead of a full page reload, since the form still posts normally.
+document.getElementById('guestbook-form').addEventListener('submit', ()=>{
+  // let the native Netlify Forms POST proceed; no preventDefault needed —
+  // Netlify redirects back or shows its default success page.
+});
+
+/* =====================================================
+   LISTEN LIVE (SDR) — deep links to a real public KiwiSDR
+   receiver, pre-tuned to specific CB channels via URL params.
+   URL pattern confirmed from a public KiwiSDR operator's own
+   posted link (WorldWideDX forum): ?f=<kHz>/-2700,2700amnz6
+   tunes that receiver to <kHz> in AM narrow mode with a
+   ±2.7kHz passband — exactly what CB (AM) needs.
+   Receiver: sdr.hfunderpants.com (Westminster, MD, USA;
+   58ft antenna; publicly offered by its operator for 11m use).
+   ===================================================== */
+const SDR_BASE = 'http://sdr.hfunderpants.com:8075/?f=';
+const SDR_CHANNELS = [
+  {ch:9,  khz:27065, label:'Emergency channel'},
+  {ch:19, khz:27185, label:'The trucker channel'},
+  {ch:6,  khz:27025, label:'Skip / DX hangout'},
+  {ch:14, khz:27125, label:'Handheld default'}
+];
+function sdrUrl(khz){ return `${SDR_BASE}${khz}/-2700,2700amnz6`; }
+
+const sdrGrid = document.getElementById('sdr-grid');
+SDR_CHANNELS.forEach(c=>{
+  const a = document.createElement('a');
+  a.className = 'sdr-card';
+  a.href = sdrUrl(c.khz);
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.innerHTML = `<span class="sdr-ch">CH ${c.ch}</span><span class="sdr-desc">${c.label}</span><span class="sdr-go">▶ Listen now →</span>`;
+  sdrGrid.appendChild(a);
+});
+</script>
+</body>
+</html>
