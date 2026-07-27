@@ -567,6 +567,16 @@
   .gb-entry .gb-l{font-size:11px;color:#5f6570;margin-left:6px;}
   .gb-entry .gb-m{font-size:13px;color:#9aa0a8;margin-top:4px;}
 
+  /* ============ NETS DIRECTORY ============ */
+  .nets-grid{display:grid;grid-template-columns:0.9fr 1.3fr;gap:24px;}
+  @media (max-width:860px){ .nets-grid{grid-template-columns:1fr;} }
+  .nets-form{background:var(--bg-panel);border:1px solid var(--line);border-radius:6px;padding:20px;height:fit-content;}
+  .nets-list{display:flex;flex-direction:column;gap:10px;}
+  .net-card{background:var(--bg-panel);border:1px solid var(--line);border-radius:5px;padding:16px 18px;}
+  .net-card .net-name{font-size:14px;font-weight:600;color:var(--text);}
+  .net-card .net-meta{font-family:var(--font-mono);font-size:11px;color:var(--orange);margin-top:4px;}
+  .net-card .net-desc{font-size:12.5px;color:var(--text-dim);margin-top:6px;}
+
   /* ============ LISTEN LIVE (SDR) ============ */
   .sdr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
   @media (max-width:760px){ .sdr-grid{grid-template-columns:repeat(2,1fr);} }
@@ -581,6 +591,28 @@
   .sdr-card .sdr-go{font-family:var(--font-mono);font-size:10px;color:#5f6570;text-transform:uppercase;margin-top:2px;}
   .sdr-more{font-size:13px;color:#5a5540;line-height:1.6;}
   .sdr-more a{color:var(--orange-dim);font-weight:600;text-decoration:underline;}
+
+  /* ============ ETIQUETTE SIMULATOR ============ */
+  .etq-tool{max-width:680px;background:#14171a;border:1px solid #2c3238;border-radius:8px;padding:26px;}
+  .etq-progress{font-family:var(--font-mono);font-size:11px;color:#7d848c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;}
+  .etq-scenario{font-size:15px;color:#e9ebee;line-height:1.6;margin-bottom:20px;padding:16px 18px;background:#1b1f23;border-left:3px solid var(--orange);border-radius:2px;}
+  .etq-scenario b{color:var(--orange);}
+  .etq-options{display:flex;flex-direction:column;gap:10px;margin-bottom:6px;}
+  .etq-opt{
+    text-align:left;padding:13px 16px;background:#1b1f23;border:1px solid #2c3238;border-radius:5px;
+    color:#c3c7cd;font-size:13.5px;cursor:pointer;transition:border-color .12s;font-family:var(--font-body);
+  }
+  .etq-opt:hover:not(:disabled){border-color:var(--orange-dim);}
+  .etq-opt:disabled{cursor:default;opacity:0.55;}
+  .etq-opt.correct{border-color:#7CFF9E;background:rgba(124,255,158,0.08);opacity:1;}
+  .etq-opt.wrong{border-color:#c0392b;background:rgba(192,57,43,0.08);opacity:1;}
+  .etq-feedback{margin-top:16px;padding:14px 18px;border-radius:5px;font-size:13px;line-height:1.6;}
+  .etq-feedback.good{background:rgba(124,255,158,0.08);border:1px solid rgba(124,255,158,0.35);color:#bdf5cf;}
+  .etq-feedback.bad{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.35);color:#e5b3ac;}
+  .etq-feedback b{color:#e9ebee;}
+  .etq-nav{display:flex;justify-content:space-between;margin-top:20px;}
+  .etq-done{text-align:center;padding:20px 0;}
+  .etq-done .etq-score{font-family:var(--font-mono);font-size:32px;color:var(--orange);font-weight:600;}
 </style>
 </head>
 <body>
@@ -591,6 +623,7 @@
     <a href="#top" class="logo"><span class="dial-mark"></span>CB RADIO <small>HQ</small></a>
     <nav class="links" aria-label="Primary">
       <a href="#channels">Channels</a>
+      <a href="#etiquette">Practice</a>
       <a href="#legal">Legal</a>
       <a href="#swr">SWR</a>
       <a href="#antenna">Antenna</a>
@@ -600,6 +633,7 @@
       <a href="#sdr">Listen Live</a>
       <a href="#log">Skip Log</a>
       <a href="#gear">Gear</a>
+      <a href="#nets">Nets</a>
       <a href="#guestbook">Guestbook</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -651,6 +685,28 @@
           <div class="handle-readout" id="handle-readout">—</div>
           <button class="btn btn-primary" id="handle-roll">🎲 Roll a Handle</button>
           <button class="btn btn-ghost" id="handle-copy" style="display:none;">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ETIQUETTE SIMULATOR ============ -->
+  <section id="etiquette" class="paper">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Practice Mode · No Radio Needed</div>
+        <h2 style="color:#20221c;">Nervous About Keying Up?</h2>
+        <p style="color:#5a5540;">Every "just got my first CB" forum post is someone scared of doing it wrong. Practice the real scenarios here first — no one can hear you mess up.</p>
+      </div>
+
+      <div class="etq-tool">
+        <div class="etq-progress" id="etq-progress"></div>
+        <div class="etq-scenario" id="etq-scenario"></div>
+        <div class="etq-options" id="etq-options"></div>
+        <div class="etq-feedback" id="etq-feedback" hidden></div>
+        <div class="etq-nav">
+          <button class="btn btn-ghost" id="etq-restart">↺ Start Over</button>
+          <button class="btn btn-primary" id="etq-next" hidden>Next Scenario →</button>
         </div>
       </div>
     </div>
@@ -981,6 +1037,52 @@
     </div>
   </section>
 
+  <!-- ============ NETS DIRECTORY ============ -->
+  <section id="nets">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Community Directory · Free, Always</div>
+        <h2>Scheduled Nets</h2>
+        <p>Ham radio has net directories. CB never has — the few that exist are UK/EU-focused and charge for it. This one's free, US-focused, and starts with whoever submits first. If you host or know of a real recurring CB net, add it below.</p>
+      </div>
+
+      <div class="nets-grid">
+        <form name="nets" method="POST" data-netlify="true" netlify-honeypot="net-hp" id="nets-form" class="nets-form">
+          <input type="hidden" name="form-name" value="nets">
+          <div class="field">
+            <label>Net Name</label>
+            <input type="text" name="netname" id="net-name" placeholder="e.g. Tuesday Night Trucker Net" maxlength="60" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Day / Time</label>
+              <input type="text" name="nettime" id="net-time" placeholder="e.g. Tue 8-9pm CT" maxlength="40" required>
+            </div>
+            <div class="field">
+              <label>Channel</label>
+              <select name="netchannel" id="net-channel"></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Region</label>
+            <input type="text" name="netregion" id="net-region" placeholder="e.g. Nationwide, or Midwest/I-80 corridor" maxlength="60">
+          </div>
+          <div class="field">
+            <label>Description / Host</label>
+            <textarea name="netdesc" id="net-desc" placeholder="What it's about, who hosts it, anything newcomers should know" maxlength="200"></textarea>
+          </div>
+          <p style="display:none;"><label>Don't fill this out: <input name="net-hp" id="net-hp"></label></p>
+          <button type="submit" class="btn btn-primary btn-block" id="net-submit">+ Submit a Net</button>
+          <div class="gb-note">Submissions are reviewed before going live — keeps the directory accurate, not spam.</div>
+        </form>
+
+        <div class="nets-list" id="nets-list">
+          <div class="spot-offline">This directory is brand new — nothing listed yet.<br>Know a real recurring CB net? Be the first to submit it and it'll anchor the whole list.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ GUESTBOOK ============ -->
   <section id="guestbook" class="paper">
     <div class="wrap" style="max-width:760px;">
@@ -1225,7 +1327,7 @@ CODES.forEach(([code,meaning])=>{
 /* =====================================================
    GEAR (placeholder Amazon Associate links — swap tag)
    ===================================================== */
-const AMZ_TAG = "cbradiohq-20"; // live Amazon Associates tag
+const AMZ_TAG = "shortwave1877-20"; // live Amazon Associates tag
 const GEAR = [
   {kicker:"Best all-around mobile",name:"Cobra 29 LTD Classic",note:"The reference mobile CB for 50+ years. NOAA weather, SWR meter built in.",est:"$90–110",asin:"B0BVGTZCLB"},
   {kicker:"Best SSB option",name:"Galaxy DX-959B",note:"Adds 12W SSB range for real skip/DX chasing beyond AM's 4W ceiling — true AM/SSB radio, unlike AM-only 'SSB-adjacent' models.",est:"$160–200",asin:"B00V8C1N96"},
@@ -1275,8 +1377,9 @@ FAQS.forEach(([q,a])=>{
 });
 
 /* =====================================================
-   LIVE SKIP OUTLOOK — reads data/space-weather.json,
-   written by skip_update.py via GitHub Actions (see repo).
+   LIVE SKIP OUTLOOK — reads /api/skip-outlook (a Netlify Function that
+   fetches NOAA data on-demand and caches it in Netlify Blobs — see
+   functions/skip-outlook.js in the repo. No cron, no committed data file.
    Falls back to a static snapshot if the file is missing
    or the fetch fails, same pattern as ShortwaveHQ's schedule.json.
    ===================================================== */
@@ -1322,7 +1425,7 @@ function renderOutlook(data){
   }
 }
 
-fetch('data/space-weather.json', {cache:'no-store'})
+fetch('/api/skip-outlook', {cache:'no-store'})
   .then(r => { if(!r.ok) throw new Error('no data file'); return r.json(); })
   .then(data => renderOutlook(data))
   .catch(() => renderOutlook(FALLBACK_WEATHER));
@@ -1477,7 +1580,7 @@ handleCopyBtn.addEventListener('click', ()=>{
 
 /* =====================================================
    SKIP SPOTS — live crowdsourced board
-   Backend: netlify/functions/skip-spots.js (Netlify Blobs)
+   Backend: functions/skip-spots.js (Netlify Blobs)
    Degrades gracefully if the API isn't deployed yet —
    shows a clear offline state instead of breaking.
    ===================================================== */
@@ -1535,7 +1638,7 @@ async function loadSpots(){
       </div>`).join('');
   }catch(e){
     spotsApiReachable = false;
-    feed.innerHTML = `<div class="spot-offline">Live spotting network not yet connected.<br>This board goes live once the site is deployed on Netlify with Functions enabled — see netlify/functions/skip-spots.js in the repo.</div>`;
+    feed.innerHTML = `<div class="spot-offline">Live spotting network not yet connected.<br>This board goes live once the site is deployed on Netlify with Functions enabled — see functions/skip-spots.js in the repo.</div>`;
   }
 }
 
@@ -1859,30 +1962,32 @@ function escapeHtmlLC(str){ const d=document.createElement('div'); d.textContent
 /* ===TOOLJS:legality:END=== */
 
 /* =====================================================
-   GUESTBOOK — Netlify Forms (no login), moderated display
-   Submissions go to the Netlify Forms dashboard for review.
-   Approved entries get added to data/guestbook.json by the
-   site owner, and are fetched/rendered here — same pattern
-   as ShortwaveHQ's guestbook.
+   NETS DIRECTORY — Netlify Forms (no login), same pattern as
+   Guestbook. Directory list is honest-empty by design until
+   real submissions are reviewed and added — see comment above
+   the Guestbook block for why no live auto-display yet.
    ===================================================== */
-function renderGuestbook(entries){
-  const box = document.getElementById('gb-entries');
-  if(!Array.isArray(entries) || entries.length===0){
-    box.innerHTML = '<div class="spot-offline">The guestbook is just opening.<br>Be the first signature — sign above and it\'ll appear here once reviewed.</div>';
-    return;
-  }
-  box.innerHTML = entries.map(e => `
-    <div class="gb-entry">
-      <span class="gb-h">${escapeHtmlLC(e.handle)}</span>${e.location ? `<span class="gb-l">— ${escapeHtmlLC(e.location)}</span>` : ''}
-      ${e.rig ? `<span class="gb-l">· ${escapeHtmlLC(e.rig)}</span>` : ''}
-      <div class="gb-m">${escapeHtmlLC(e.message)}</div>
-    </div>`).join('');
-}
+const netChannelSel = document.getElementById('net-channel');
+CHANNELS.forEach(c=>{
+  const opt = document.createElement('option');
+  opt.value = c.ch; opt.textContent = `Ch ${c.ch} — ${c.freq} MHz`;
+  netChannelSel.appendChild(opt);
+});
+netChannelSel.value = 19;
 
-fetch('data/guestbook.json', {cache:'no-store'})
-  .then(r => { if(!r.ok) throw new Error('no file'); return r.json(); })
-  .then(renderGuestbook)
-  .catch(()=>{ /* keep the default "just opening" empty state already in the HTML */ });
+document.getElementById('nets-form').addEventListener('submit', ()=>{
+  // let the native Netlify Forms POST proceed; no preventDefault needed —
+  // Netlify redirects back or shows its default success page.
+});
+
+/* =====================================================
+   GUESTBOOK — Netlify Forms (no login)
+   Submissions go to the Netlify Forms dashboard for review — no
+   separate data file or fetch needed. The default message already
+   in the HTML above covers the "nothing shown yet" state; a live
+   approved-entries display can be added later as its own function
+   if wanted, same pattern as Skip Spots.
+   ===================================================== */
 
 // Netlify Forms handles the actual submission (data-netlify="true" on the
 // form does this natively on deploy); this just gives instant feedback
@@ -1921,6 +2026,146 @@ SDR_CHANNELS.forEach(c=>{
   a.innerHTML = `<span class="sdr-ch">CH ${c.ch}</span><span class="sdr-desc">${c.label}</span><span class="sdr-go">▶ Listen now →</span>`;
   sdrGrid.appendChild(a);
 });
+
+/* =====================================================
+   ON-AIR ETIQUETTE SIMULATOR
+   6 realistic beginner scenarios, one correct-etiquette answer
+   each, with feedback explaining why. Pure practice — nothing
+   transmits, nothing is graded/stored anywhere.
+   ===================================================== */
+const ETQ_SCENARIOS = [
+  {
+    prompt: "You just got a CB and want to see if anyone's around on <b>Channel 19</b>. What's the right way to start?",
+    options: [
+      {text:'Key up and say "Breaker 19" then wait for a response', correct:true,
+       feedback:'Right approach. "Breaker" plus the channel number is the standard way to announce you want in. Then wait — don\'t keep talking.'},
+      {text:'Key up and start talking about your day, see if anyone answers', correct:false,
+       feedback:'This reads as not knowing the convention. "Breaker" signals you\'re requesting to join — jumping straight into talk without it can get ignored or corrected.'},
+      {text:'Hold the mic key down for 10+ seconds first to "test" the radio', correct:false,
+       feedback:'Never key up and hold without transmitting something — you\'re blocking the channel for everyone else listening, including in an emergency.'}
+    ]
+  },
+  {
+    prompt: "Someone asks for a <b>signal report</b> ('how do I sound?'). What do they actually want to hear?",
+    options: [
+      {text:'A quick read like "you\'re 5 by 9" or "loud and clear"', correct:true,
+       feedback:'Exactly — a fast readability/strength read (or plain "loud and clear" / "a little scratchy") is all that\'s expected. No need to overexplain.'},
+      {text:'A detailed technical breakdown of their audio quality', correct:false,
+       feedback:'Way more than asked for. Signal reports are meant to be quick — a few words, not a review.'},
+      {text:'Nothing — signal reports are only for ham radio, not CB', correct:false,
+       feedback:'They\'re common on CB too, especially among skip-chasers checking how far they\'re reaching.'}
+    ]
+  },
+  {
+    prompt: "You're mid-conversation on a channel and someone says <b>\"breaker\"</b> during a pause. What now?",
+    options: [
+      {text:'Pause and let them in — "go ahead, breaker"', correct:true,
+       feedback:'Correct. A breaker gets priority to say what they need — usually short (asking a question, joining, or reporting an emergency) — then the conversation continues.'},
+      {text:'Ignore it and keep talking — you had the channel first', correct:false,
+       feedback:'This is the #1 complaint about rude operators. "Breaker" is a request to speak, not a full interruption — a few seconds to let them in is the norm.'},
+      {text:'Immediately give up the channel entirely and go silent', correct:false,
+       feedback:'Overcorrection — you don\'t need to abandon your conversation, just pause for the breaker to say their piece.'}
+    ]
+  },
+  {
+    prompt: "You hear someone say <b>\"10-100\"</b> and step away from their mic mid-chat. What does that mean?",
+    options: [
+      {text:'They\'re taking a bathroom break and will be back', correct:true,
+       feedback:'Right — it\'s old CB slang for a restroom break. Harmless, common, nothing to respond to.'},
+      {text:'They\'re reporting an emergency', correct:false,
+       feedback:'That\'s not what 10-100 means — emergency traffic uses 10-33, not this code.'},
+      {text:'They\'re asking you to stop transmitting', correct:false,
+       feedback:'Not what this means at all — it\'s just a bathroom-break code, not a request directed at you.'}
+    ]
+  },
+  {
+    prompt: "You want to end a conversation politely and get off the channel. What's the norm?",
+    options: [
+      {text:'Say something like "10-10 on the side" or "catch you later, good buddy"', correct:true,
+       feedback:'That\'s the convention — signals you\'re wrapping up but still monitoring, without just going silent mid-thread.'},
+      {text:'Just stop responding without saying anything', correct:false,
+       feedback:'Works, but leaves the other operator unsure if you got cut off or lost signal — a quick sign-off is just common courtesy.'},
+      {text:'Say "over and out"', correct:false,
+       feedback:'A classic movie line, not real radio procedure — "over" and "out" mean opposite things (over = your turn to talk, out = conversation\'s done) and saying both together is a well-known giveaway of a beginner.'}
+    ]
+  },
+  {
+    prompt: "You've got a lot to say and a captive audience. How long should you actually key up for?",
+    options: [
+      {text:'Short transmissions, then release the mic so others can jump in', correct:true,
+       feedback:'Correct etiquette — CB is a shared, half-duplex channel. Long unbroken transmissions ("hogging the channel") is the most common newbie mistake and the fastest way to annoy a channel full of regulars.'},
+      {text:'As long as you want — it\'s a free channel', correct:false,
+       feedback:'Technically legal, but a fast way to get a reputation. Shared channels run on people taking turns.'},
+      {text:'Exactly 30 seconds, timed, every transmission', correct:false,
+       feedback:'There\'s no hard rule like this — the real guidance is just "keep it reasonably short and let others in," not a strict timer.'}
+    ]
+  }
+];
+
+let etqIndex = 0;
+let etqScore = 0;
+
+function renderEtqScenario(){
+  const s = ETQ_SCENARIOS[etqIndex];
+  document.getElementById('etq-progress').textContent = `Scenario ${etqIndex+1} of ${ETQ_SCENARIOS.length}`;
+  document.getElementById('etq-scenario').innerHTML = s.prompt;
+  const optBox = document.getElementById('etq-options');
+  optBox.innerHTML = '';
+  const feedback = document.getElementById('etq-feedback');
+  feedback.hidden = true;
+  document.getElementById('etq-next').hidden = true;
+
+  s.options.forEach((opt, i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'etq-opt';
+    btn.textContent = opt.text;
+    btn.addEventListener('click', ()=>{
+      // lock all options, mark correctness
+      [...optBox.children].forEach((b,j)=>{
+        b.disabled = true;
+        if(s.options[j].correct) b.classList.add('correct');
+      });
+      if(!opt.correct) btn.classList.add('wrong');
+      else etqScore++;
+
+      feedback.hidden = false;
+      feedback.className = 'etq-feedback ' + (opt.correct ? 'good' : 'bad');
+      feedback.innerHTML = (opt.correct ? '<b>Correct.</b> ' : '<b>Not quite.</b> ') + opt.feedback;
+
+      if(etqIndex < ETQ_SCENARIOS.length - 1){
+        document.getElementById('etq-next').hidden = false;
+      } else {
+        showEtqDone();
+      }
+    });
+    optBox.appendChild(btn);
+  });
+}
+
+function showEtqDone(){
+  const tool = document.querySelector('.etq-tool');
+  const pct = Math.round((etqScore/ETQ_SCENARIOS.length)*100);
+  document.getElementById('etq-feedback').insertAdjacentHTML('afterend', `
+    <div class="etq-done" id="etq-done-msg">
+      <div class="etq-score">${etqScore}/${ETQ_SCENARIOS.length}</div>
+      <div style="color:#9aa0a8;font-size:13px;margin-top:6px;">${pct>=80?'You know the etiquette — go key up with confidence.':pct>=50?'Solid start — a couple of these are worth re-reading before you\'re on the air.':'Worth going through these again — CB etiquette is mostly just a few habits.'}</div>
+    </div>`);
+}
+
+document.getElementById('etq-next').addEventListener('click', ()=>{
+  etqIndex++;
+  renderEtqScenario();
+});
+
+document.getElementById('etq-restart').addEventListener('click', ()=>{
+  etqIndex = 0;
+  etqScore = 0;
+  const doneMsg = document.getElementById('etq-done-msg');
+  if(doneMsg) doneMsg.remove();
+  renderEtqScenario();
+});
+
+renderEtqScenario();
 </script>
 </body>
 </html>
